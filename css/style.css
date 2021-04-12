@@ -24,7 +24,7 @@
 }
 
 .main__content {
-  background-color: #F8FCFD;
+  background-color: transparent;
   min-height: 1200px;
   padding: 25px;
 }
@@ -77,7 +77,7 @@
 
 .side {
   grid-area: side;
-  background-color: #fff;
+  background-color: transparent;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   position: relative;
@@ -229,7 +229,7 @@ body {
   position: relative;
   min-height: 100%;
   font-family: 'Play', sans-serif;
-  background-color: #e5e5e5;
+  background-color: #F8FCFD;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -240,10 +240,9 @@ body.lock {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr minmax(auto, 240px) minmax(auto, 1040px) 1fr;
-  grid-template-rows: 1fr minmax(auto, 200px);
-  grid-template-areas: ' . side main .' 'footer footer footer footer';
-  padding-top: 80px;
+  grid-template-columns: minmax(auto, 240px) 1fr minmax(auto, 1040px) 1fr;
+  grid-template-rows: minmax(auto, 80px) 1fr minmax(auto, 200px);
+  grid-template-areas: 'header header header header' ' side . main .' 'footer footer footer footer';
 }
 
 .overlay {
@@ -268,8 +267,6 @@ body.lock {
 .header {
   grid-area: header;
   background-color: #fff;
-  position: fixed;
-  top: 0;
   z-index: 3;
   width: 100%;
   height: 80px;
@@ -278,8 +275,6 @@ body.lock {
 }
 
 .header__container {
-  max-width: 1310px;
-  margin: 0 auto;
   padding: 0 25px 0 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -320,10 +315,16 @@ body.lock {
     transition: .3s;
     z-index: 2;
     overflow: auto;
+    background-color: #F8FCFD;
   }
 
   .side.active {
     right: 0;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
   }
 
   .header__burger {
@@ -398,5 +399,6 @@ body.lock {
 
   .wrapper {
     display: block;
+    padding-top: 80px;
   }
 }
