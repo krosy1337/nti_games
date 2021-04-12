@@ -225,6 +225,10 @@ h6 {
   font-weight: 400;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   position: relative;
   min-height: 100%;
@@ -243,6 +247,7 @@ body.lock {
   grid-template-columns: minmax(auto, 240px) 1fr minmax(auto, 1040px) 1fr;
   grid-template-rows: minmax(auto, 80px) 1fr minmax(auto, 200px);
   grid-template-areas: 'header header header header' ' side . main .' 'footer footer footer footer';
+  min-height: 100vh;
 }
 
 .overlay {
