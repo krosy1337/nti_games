@@ -12,6 +12,9 @@ mainGameButtons.forEach(button => {
 			containerBody.classList.add('active')
 		}
 
+		button.classList.toggle('active')
+
+
 	})
 })
 
