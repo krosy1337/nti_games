@@ -214,6 +214,11 @@
       align-self: center;
 }
 
+.game-acc__id {
+  font-size: 14px;
+  color: #BFBFBF;
+}
+
 .game-acc__icon-container {
   margin-right: 17px;
   height: 45px;
