@@ -137,6 +137,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 12px;
 }
 
 .user-info__icon {
@@ -184,6 +185,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-top: 7px;
+  border-top: 1px solid #F1F1F1;
+}
+
+.game-acc + .game-acc {
+  margin-top: 11px;
 }
 
 .game-acc__info {
@@ -196,8 +203,29 @@
   margin-bottom: 7px;
 }
 
-.game-acc__icon {
+.game-acc__info_nl {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.game-acc__info_nl .game-acc__button {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.game-acc__icon-container {
   margin-right: 17px;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .game-acc__button {
@@ -207,7 +235,7 @@
   border-radius: 8px;
   padding: 2px 8px;
   background-color: transparent;
-  font-size: 10px;
+  font-size: 14px;
   color: #188E8E;
 }
 
