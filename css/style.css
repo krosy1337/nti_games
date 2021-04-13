@@ -176,6 +176,41 @@
   line-height: 1;
 }
 
+.game-acc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.game-acc__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 7px;
+}
+
+.game-acc__icon {
+  margin-right: 17px;
+}
+
+.game-acc__button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  border: 1px solid #188E8E;
+  border-radius: 8px;
+  padding: 2px 8px;
+  background-color: transparent;
+  font-size: 10px;
+  color: #188E8E;
+}
+
 .footer {
   grid-area: footer;
   background-color: #2C2C2C;
