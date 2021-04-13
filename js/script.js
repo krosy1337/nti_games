@@ -1,3 +1,20 @@
+const mainGameButtons = document.querySelectorAll('.main__game-button')
+
+mainGameButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		const containerBody = button.closest('.game').querySelector('.game__body')
+
+		if (containerBody.classList.contains('active')) {
+			containerBody.style.maxHeight = null
+			containerBody.classList.remove('active')
+		} else {
+			containerBody.style.maxHeight = containerBody.scrollHeight + 'px'
+			containerBody.classList.add('active')
+		}
+
+	})
+})
+
 const sideBar = document.querySelector('.side')
 const burger = document.querySelector('.header__burger')
 const overlay = document.querySelector('.overlay')
