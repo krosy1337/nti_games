@@ -48,6 +48,9 @@
   -webkit-transform: rotate(0);
       -ms-transform: rotate(0);
           transform: rotate(0);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .main__game-button.active {
