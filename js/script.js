@@ -13,8 +13,6 @@ mainGameButtons.forEach(button => {
 		}
 
 		button.classList.toggle('active')
-
-
 	})
 })
 

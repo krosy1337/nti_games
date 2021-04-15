@@ -129,6 +129,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 40px 10px 10px 10px;
+  margin-bottom: 10px;
 }
 
 .graph__arrow {
@@ -176,28 +177,76 @@
 }
 
 .graph__block {
-  padding: 5px;
-  font-size: 18px;
-  word-wrap: break-word;
+  height: 30px;
 }
 
 .graph__block_g {
-  color: #6E8265;
   background-color: #99BC8A;
 }
 
 .graph__block_b {
-  color: #6D7A86;
   background-color: #95A8B9;
 }
 
 .graph__block_r {
-  color: #8A6B6D;
   background-color: #AF8689;
 }
 
 .graph__block_y {
-  color: #A39F7A;
+  background-color: #C9C59A;
+}
+
+.graph__legend-item {
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.graph__legend-item + .graph__legend-item {
+  margin-top: 9px;
+}
+
+.graph__legend-item:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  display: block;
+}
+
+.graph__legend-item_g {
+  color: #99BC8A;
+}
+
+.graph__legend-item_g:before {
+  background-color: #99BC8A;
+}
+
+.graph__legend-item_b {
+  color: #95A8B9;
+}
+
+.graph__legend-item_b:before {
+  background-color: #95A8B9;
+}
+
+.graph__legend-item_r {
+  color: #AF8689;
+}
+
+.graph__legend-item_r:before {
+  background-color: #AF8689;
+}
+
+.graph__legend-item_y {
+  color: #C9C59A;
+}
+
+.graph__legend-item_y:before {
   background-color: #C9C59A;
 }
 
@@ -660,10 +709,6 @@ body.lock {
 @media (max-width: 1280px) {
   .graph {
     height: calc(190px + 40 * ((100vw - 320px) / 960));
-  }
-
-  .graph__block {
-    font-size: calc(12px + 6 * ((100vw - 320px) / 960));
   }
 }
 
