@@ -1,4 +1,4 @@
-const mainGameButtons = document.querySelectorAll('.main__game-button')
+const mainGameButtons = document.querySelectorAll('.main__game-button_o')
 
 mainGameButtons.forEach(button => {
 	button.addEventListener('click', () => {
