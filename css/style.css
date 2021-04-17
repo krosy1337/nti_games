@@ -331,6 +331,10 @@
           justify-content: center;
 }
 
+.side__user-games {
+  margin-bottom: 20px;
+}
+
 .user-info {
   display: -webkit-box;
   display: -ms-flexbox;
