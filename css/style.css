@@ -298,6 +298,32 @@
 
 .side__content {
   padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%;
+}
+
+.side-btn {
+  border: 1px solid #188E8E;
+  border-radius: 20px;
+  padding: 2px 0;
+  background-color: transparent;
+  font-size: 14px;
+  color: #188E8E;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .user-info {
@@ -410,22 +436,31 @@
 .game-acc__button {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  border: 1px solid #188E8E;
-  border-radius: 20px;
-  padding: 2px 0;
-  background-color: transparent;
-  font-size: 14px;
-  color: #188E8E;
   width: 80px;
+}
+
+.share {
+  margin-top: auto;
+}
+
+.share__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.share__item + .share__item {
+  margin-top: 48px;
+}
+
+.share__btn {
+  padding: 2px 12px;
 }
 
 .footer {
