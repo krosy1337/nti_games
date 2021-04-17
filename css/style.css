@@ -287,6 +287,11 @@
   margin-top: 27px;
 }
 
+.game__stat-value {
+  font-weight: 700;
+  color: #4b4444;
+}
+
 .side {
   grid-area: side;
   background-color: #fff;
