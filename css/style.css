@@ -796,6 +796,14 @@ body {
           flex-direction: column;
 }
 
+.home-btn {
+  border: 1px solid #188E8E;
+  border-radius: 16px;
+  font-size: 14px;
+  color: #188E8E;
+  background-color: transparent;
+}
+
 .header-home {
   background-color: #001623;
   z-index: 3;
@@ -855,12 +863,7 @@ body {
 }
 
 .header-home__btn {
-  border: 1px solid #188E8E;
-  border-radius: 16px;
-  font-size: 14px;
-  color: #188E8E;
   padding: 8px 38px;
-  background-color: transparent;
 }
 
 .header-home__btn-icon {
@@ -901,6 +904,14 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding: 10px;
+  position: relative;
+}
+
+.main-home__src {
+  padding: 8px;
+  position: absolute;
+  bottom: 34px;
+  right: 47px;
 }
 
 .about {
@@ -1048,6 +1059,14 @@ body.lock {
 @media (max-width: 1280px) {
   .graph {
     height: calc(190px + 40 * ((100vw - 320px) / 960));
+  }
+
+  .main-home__src {
+    bottom: calc(23px + 11 * ((100vw - 320px) / 960));
+  }
+
+  .main-home__src {
+    right: calc(28px + 19 * ((100vw - 320px) / 960));
   }
 
   .about {
