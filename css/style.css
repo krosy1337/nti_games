@@ -287,9 +287,7 @@ h6 {
   position: relative;
   border-bottom: 2px solid #7F7E7C;
   border-left: 2px solid #7F7E7C;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -363,6 +361,10 @@ h6 {
 
 .graph__block_y {
   background-color: #C9C59A;
+}
+
+.graph__legend {
+  display: none;
 }
 
 .graph__legend-item {
@@ -749,6 +751,33 @@ body.lock {
 .overlay.active {
   visibility: visible;
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.progress-ring {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.progress-ring__circle {
+  stroke-dasharray: 251.32741228718345 251.32741228718345;
+  stroke-dashoffset: 87.9645943005142;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.progress-ring__num {
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .error-wrapper {
