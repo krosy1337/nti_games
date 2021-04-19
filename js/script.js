@@ -19,6 +19,24 @@ if (mainGameButtons) {
 }
 
 
+const switchButton = document.querySelector('.theme-switch')
+
+function initialState(themeName) {
+	localStorage.setItem('theme', themeName)
+	document.documentElement.className = themeName
+}
+
+initialState('light-theme')
+
+if (switchButton) {
+	switchButton.addEventListener('change', () => {
+		if (switchButton.checked) {
+			initialState('dark-theme')
+			return
+		}
+		initialState('light-theme')
+	})
+}
 
 const sideBar = document.querySelector('.side')
 const burger = document.querySelector('.header__burger')
