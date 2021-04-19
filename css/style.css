@@ -724,6 +724,7 @@ html.dark-theme {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 10px;
+  color: var(--color-black);
 }
 
 .checkbox__true {
@@ -734,41 +735,41 @@ html.dark-theme {
   width: 50px;
   height: 20px;
   border-radius: 20px;
-  background-color: #c1c1c1;
+  background-color: #505050;
   display: inline-block;
   margin-right: 20px;
   position: relative;
-  -webkit-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .checkbox__fake:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 0;
   -webkit-transform: translate(0, -50%);
       -ms-transform: translate(0, -50%);
           transform: translate(0, -50%);
-  background-color: #6ea538;
+  background-color: #c1c1c1;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  -webkit-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .checkbox__true:checked + .checkbox__fake:before {
   left: 50%;
-  background-color: #6ea538;
+  background-color: #c1c1c1;
 }
 
 .checkbox__true:checked + .checkbox__fake {
-  background-color: #6ea538;
+  background-color: #c1c1c1;
 }
 
 .footer {
@@ -1243,14 +1244,16 @@ body.lock {
     height: 10%;
     width: 100%;
     background-color: var(--color-black);
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
   }
 
   .header__burger:before,
   .header__burger:after {
-    content: '';
+    content: "";
     -webkit-transform: rotate(0) translateY(0);
         -ms-transform: rotate(0) translateY(0);
             transform: rotate(0) translateY(0);
@@ -1297,9 +1300,9 @@ body.lock {
     bottom: 0;
     right: -100%;
     width: 260px;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s;
+    -webkit-transition: right 0.3s;
+    -o-transition: right 0.3s;
+    transition: right 0.3s;
     z-index: 2;
     overflow: auto;
   }
