@@ -108,7 +108,7 @@ html.light-theme {
   --color-a8: #a8a8a8;
   --color-98: #989898;
   --color-bf: #bfbfbf;
-  --color-18: #188E8E;
+  --color-18: #188e8e;
   --color-f1: #f1f1f1;
   --color-2c: #2c2c2c;
   --color-46: #464646;
@@ -118,11 +118,13 @@ html.light-theme {
   --color-icon: #bfbfbf;
   --color-rgba: rgba(0, 0, 0, 0.02);
   --color-footer-text: #bfbfbf;
-  --steam-icon: url('../img/icons/steam-icon.svg');
-  --blizzard-icon: url('../img/icons/blizzard-icon.svg');
-  --csgo-icon: url('../img/icons/csgo-icon.svg');
-  --dota-icon: url('../img/icons/dota-icon.svg');
-  --overwatch-icon: url('../img/icons/overwatch-icon.svg');
+  --color-stat: #828282;
+  --color-value: #4b4b4b;
+  --steam-icon: url("../img/icons/steam-icon.svg");
+  --blizzard-icon: url("../img/icons/blizzard-icon.svg");
+  --csgo-icon: url("../img/icons/csgo-icon.svg");
+  --dota-icon: url("../img/icons/dota-icon.svg");
+  --overwatch-icon: url("../img/icons/overwatch-icon.svg");
 }
 
 html.dark-theme {
@@ -132,21 +134,23 @@ html.dark-theme {
   --color-a8: #a8a8a8;
   --color-98: #989898;
   --color-bf: #bfbfbf;
-  --color-18: #188E8E;
+  --color-18: #188e8e;
   --color-f1: #f1f1f1;
   --color-2c: #000f17;
   --color-46: #464646;
   --color-5e: #5e5e5e;
-  --color-82: #302910;
-  --color-4b: #302910;
+  --color-82: #828282;
+  --color-4b: #4b4444;
   --color-icon: #7d7d7d;
   --color-rgba: rgba(0, 0, 0, 0.04);
   --color-footer-text: #7d7d7d;
-  --steam-icon: url('../img/icons/steam-dark-icon.svg');
-  --blizzard-icon: url('../img/icons/blizzard-dark-icon.svg');
-  --csgo-icon: url('../img/icons/csgo-dark-icon.svg');
-  --dota-icon: url('../img/icons/dota-dark-icon.svg');
-  --overwatch-icon: url('../img/icons/overwatch-dark-icon.svg');
+  --color-stat: #a8a8a8;
+  --color-value: #a8a8a8;
+  --steam-icon: url("../img/icons/steam-dark-icon.svg");
+  --blizzard-icon: url("../img/icons/blizzard-dark-icon.svg");
+  --csgo-icon: url("../img/icons/csgo-dark-icon.svg");
+  --dota-icon: url("../img/icons/dota-dark-icon.svg");
+  --overwatch-icon: url("../img/icons/overwatch-dark-icon.svg");
 }
 
 .header {
@@ -276,9 +280,9 @@ html.dark-theme {
 .main__game-button {
   border-radius: 50%;
   background-color: transparent;
-  -webkit-transition: .3s;
-  -o-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
   -webkit-transform: rotate(0);
       -ms-transform: rotate(0);
           transform: rotate(0);
@@ -348,8 +352,8 @@ html.dark-theme {
   max-width: 700px;
   height: 230px;
   position: relative;
-  border-bottom: 2px solid #7F7E7C;
-  border-left: 2px solid #7F7E7C;
+  border-bottom: 2px solid #7f7e7c;
+  border-left: 2px solid #7f7e7c;
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -375,7 +379,7 @@ html.dark-theme {
           transform-origin: center;
   width: 6px;
   height: 1px;
-  background-color: #7F7E7C;
+  background-color: #7f7e7c;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -411,19 +415,19 @@ html.dark-theme {
 }
 
 .graph__block_g {
-  background-color: #99BC8A;
+  background-color: #99bc8a;
 }
 
 .graph__block_b {
-  background-color: #95A8B9;
+  background-color: #95a8b9;
 }
 
 .graph__block_r {
-  background-color: #AF8689;
+  background-color: #af8689;
 }
 
 .graph__block_y {
-  background-color: #C9C59A;
+  background-color: #c9c59a;
 }
 
 .graph__legend {
@@ -453,35 +457,35 @@ html.dark-theme {
 }
 
 .graph__legend-item_g {
-  color: #99BC8A;
+  color: #99bc8a;
 }
 
 .graph__legend-item_g:before {
-  background-color: #99BC8A;
+  background-color: #99bc8a;
 }
 
 .graph__legend-item_b {
-  color: #95A8B9;
+  color: #95a8b9;
 }
 
 .graph__legend-item_b:before {
-  background-color: #95A8B9;
+  background-color: #95a8b9;
 }
 
 .graph__legend-item_r {
-  color: #AF8689;
+  color: #af8689;
 }
 
 .graph__legend-item_r:before {
-  background-color: #AF8689;
+  background-color: #af8689;
 }
 
 .graph__legend-item_y {
-  color: #C9C59A;
+  color: #c9c59a;
 }
 
 .graph__legend-item_y:before {
-  background-color: #C9C59A;
+  background-color: #c9c59a;
 }
 
 .game {
@@ -503,9 +507,9 @@ html.dark-theme {
 .game__body {
   overflow: hidden;
   max-height: 0;
-  -webkit-transition: .3s;
-  -o-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .game__body.active {
@@ -514,7 +518,7 @@ html.dark-theme {
 
 .game__stat {
   font-size: 18px;
-  color: var(--color-82);
+  color: var(--color-stat);
 }
 
 .game__stat + .game__stat {
@@ -523,7 +527,7 @@ html.dark-theme {
 
 .game__stat-value {
   font-weight: 700;
-  color: var(--color-4b);
+  color: var(--color-value);
 }
 
 .side {
