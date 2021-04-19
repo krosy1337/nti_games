@@ -566,7 +566,7 @@ html.dark-theme {
 }
 
 .side__user-games {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .user-info {
@@ -723,7 +723,7 @@ html.dark-theme {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: var(--color-black);
 }
 
