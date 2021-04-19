@@ -566,7 +566,7 @@ html.dark-theme {
 }
 
 .side__user-games {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .user-info {
@@ -597,7 +597,7 @@ html.dark-theme {
 }
 
 .user-info__item:last-of-type {
-  margin-bottom: 90px;
+  margin-bottom: 60px;
 }
 
 .user-info__logout {
@@ -723,8 +723,9 @@ html.dark-theme {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 20px;
-  color: var(--color-black);
+  margin-bottom: 6px;
+  color: var(--color-a8);
+  font-size: 14px;
 }
 
 .checkbox__true {
@@ -732,12 +733,12 @@ html.dark-theme {
 }
 
 .checkbox__fake {
-  width: 50px;
-  height: 20px;
+  width: 40px;
+  height: 18px;
   border-radius: 20px;
-  background-color: #505050;
+  background-color: #4f4f4f;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 4px;
   position: relative;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
@@ -752,9 +753,9 @@ html.dark-theme {
   -webkit-transform: translate(0, -50%);
       -ms-transform: translate(0, -50%);
           transform: translate(0, -50%);
-  background-color: #c1c1c1;
-  width: 30px;
-  height: 30px;
+  background-color: #c4c4c4;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
@@ -765,11 +766,11 @@ html.dark-theme {
 
 .checkbox__true:checked + .checkbox__fake:before {
   left: 50%;
-  background-color: #c1c1c1;
+  background-color: #c4c4c4;
 }
 
 .checkbox__true:checked + .checkbox__fake {
-  background-color: #c1c1c1;
+  background-color: #188e8e;
 }
 
 .footer {
