@@ -102,24 +102,25 @@ h6 {
 }
 
 html.light-theme {
-  --color-white: #fff;
-  --color-black: #000;
+  --color-general: #fff;
+  --color-header-logo: #000;
   --color-bg: #f8fcfd;
-  --color-a8: #a8a8a8;
-  --color-98: #989898;
-  --color-bf: #bfbfbf;
-  --color-18: #188e8e;
-  --color-f1: #f1f1f1;
-  --color-2c: #2c2c2c;
-  --color-46: #464646;
-  --color-5e: #5e5e5e;
-  --color-82: #828282;
-  --color-4b: #4b4444;
-  --color-icon: #bfbfbf;
-  --color-rgba: rgba(0, 0, 0, 0.02);
+  --color-header-title: #a8a8a8;
+  --color-user-info: #a8a8a8;
+  --color-user-btn: #bfbfbf;
+  --color-side-game: #bfbfbf;
+  --color-side-game-border: #f1f1f1;
+  --color-side-game-btn: #188e8e;
+  --color-main-info-title: #989898;
+  --color-main-info-result: #bfbfbf;
+  --color-main-game-title: #5e5e5e;
+  --color-main-game-icon: #bfbfbf;
+  --color-main-game-stat: #828282;
+  --color-main-game-value: #4b4b4b;
   --color-footer-text: #bfbfbf;
-  --color-stat: #828282;
-  --color-value: #4b4b4b;
+  --color-footer-line: #464646;
+  --color-footer-bg: #2c2c2c;
+  --color-rgba: rgba(0, 0, 0, 0.02);
   --color-circle-value: #000;
   --color-kd-circle: #fbbc05;
   --color-ti-circle: #34a853;
@@ -133,24 +134,25 @@ html.light-theme {
 }
 
 html.dark-theme {
-  --color-white: #001623;
-  --color-black: #bfbfbf;
+  --color-general: #001623;
+  --color-header-logo: #bfbfbf;
   --color-bg: #041b28;
-  --color-a8: #a8a8a8;
-  --color-98: #989898;
-  --color-bf: #bfbfbf;
-  --color-18: #188e8e;
-  --color-f1: #f1f1f1;
-  --color-2c: #000f17;
-  --color-46: #464646;
-  --color-5e: #5e5e5e;
-  --color-82: #828282;
-  --color-4b: #4b4444;
-  --color-icon: #7d7d7d;
-  --color-rgba: rgba(0, 0, 0, 0.04);
+  --color-header-title: #a8a8a8;
+  --color-user-info: #a8a8a8;
+  --color-user-btn: #bfbfbf;
+  --color-side-game: #bfbfbf;
+  --color-side-game-border: #f1f1f1;
+  --color-side-game-btn: #188e8e;
+  --color-main-info-title: #989898;
+  --color-main-info-result: #bfbfbf;
+  --color-main-game-title: #5e5e5e;
+  --color-main-game-icon: #7d7d7d;
   --color-footer-text: #7d7d7d;
-  --color-stat: #a8a8a8;
-  --color-value: #a8a8a8;
+  --color-footer-line: #464646;
+  --color-footer-bg: #000f17;
+  --color-main-game-stat: #a8a8a8;
+  --color-main-game-value: #a8a8a8;
+  --color-rgba: rgba(0, 0, 0, 0.04);
   --color-circle-value: #fff;
   --color-kd-circle: #fbbc05;
   --color-ti-circle: #34a853;
@@ -165,12 +167,13 @@ html.dark-theme {
 
 .header {
   grid-area: header;
-  background-color: var(--color-white);
+  background-color: var(--color-general);
   z-index: 3;
   width: 100%;
   height: 80px;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: var(--color-header-logo);
 }
 
 .header__container {
@@ -200,7 +203,7 @@ html.dark-theme {
 
 .header__title {
   font-size: 14px;
-  color: var(--color-a8);
+  color: var(--color-header-title);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,7 +215,7 @@ html.dark-theme {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 8px 0 8px 6px;
-  border-left: 1px solid var(--color-a8);
+  border-left: 1px solid var(--color-header-title);
 }
 
 .header__title-text + .header__title-text {
@@ -242,7 +245,7 @@ html.dark-theme {
 
 .logo__text {
   font-size: 23px;
-  color: var(--color-black);
+  color: inherit;
 }
 
 .main {
@@ -262,13 +265,13 @@ html.dark-theme {
 
 .main__info-title {
   font-size: 24px;
-  color: var(--color-98);
+  color: var(--color-main-info-title);
   margin-bottom: 8px;
 }
 
 .main__info-result {
   font-size: 18px;
-  color: var(--color-bf);
+  color: var(--color-main-info-result);
   margin-bottom: 25px;
   display: block;
 }
@@ -307,7 +310,7 @@ html.dark-theme {
 }
 
 .main__game-button-icon path {
-  fill: var(--color-icon);
+  fill: var(--color-main-game-icon);
 }
 
 .main__game-info {
@@ -321,7 +324,7 @@ html.dark-theme {
 
 .main__game-kf {
   font-size: 18px;
-  color: var(--color-5e);
+  color: var(--color-main-game-title);
 }
 
 .main__game-icon {
@@ -385,6 +388,7 @@ html.dark-theme {
       -ms-flex-align: center;
           align-items: center;
   font-size: 18px;
+  color: var(--color-circle-value);
 }
 
 .graph__ring-circle {
@@ -425,25 +429,21 @@ html.dark-theme {
 
 .graph__ring_kd {
   stroke: var(--color-kd-circle);
-  color: var(--color-kd-circle);
   stroke-dashoffset: 76.96902001294993;
 }
 
 .graph__ring_ti {
   stroke: var(--color-ti-circle);
-  color: var(--color-ti-circle);
   stroke-dashoffset: 41.78318229274424;
 }
 
 .graph__ring_ll {
   stroke: var(--color-ll-circle);
-  color: var(--color-ll-circle);
   stroke-dashoffset: 160.5353845984384;
 }
 
 .graph__ring_tl {
   stroke: var(--color-tl-circle);
-  color: var(--color-tl-circle);
   stroke-dashoffset: 19.79203371761568;
 }
 
@@ -477,7 +477,7 @@ html.dark-theme {
 
 .game__stat {
   font-size: 18px;
-  color: var(--color-stat);
+  color: var(--color-main-game-stat);
 }
 
 .game__stat + .game__stat {
@@ -486,12 +486,12 @@ html.dark-theme {
 
 .game__stat-value {
   font-weight: 700;
-  color: var(--color-value);
+  color: var(--color-main-game-value);
 }
 
 .side {
   grid-area: side;
-  background-color: var(--color-white);
+  background-color: var(--color-general);
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   position: relative;
@@ -511,12 +511,12 @@ html.dark-theme {
 }
 
 .side-btn {
-  border: 1px solid var(--color-18);
+  border: 1px solid var(--color-side-game-btn);
   border-radius: 20px;
   padding: 2px 0;
   background-color: transparent;
   font-size: 14px;
-  color: var(--color-18);
+  color: var(--color-side-game-btn);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -544,6 +544,7 @@ html.dark-theme {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 12px;
+  color: var(--color-user-info);
 }
 
 .user-info__icon {
@@ -552,7 +553,7 @@ html.dark-theme {
 }
 
 .user-info__item {
-  color: var(--color-a8);
+  color: inherit;
 }
 
 .user-info__item + .user-info__item {
@@ -574,7 +575,7 @@ html.dark-theme {
 }
 
 .user-info__logout-text {
-  color: var(--color-bf);
+  color: var(--color-user-btn);
   font-size: 14px;
   margin-right: 7px;
 }
@@ -592,7 +593,8 @@ html.dark-theme {
       -ms-flex-direction: column;
           flex-direction: column;
   padding-top: 7px;
-  border-top: 1px solid var(--color-f1);
+  border-top: 1px solid var(--color-side-game-border);
+  color: var(--color-side-game);
 }
 
 .game-acc + .game-acc {
@@ -622,7 +624,7 @@ html.dark-theme {
 
 .game-acc__id {
   font-size: 14px;
-  color: var(--color-bf);
+  color: inherit;
 }
 
 .game-acc__icon {
@@ -687,7 +689,7 @@ html.dark-theme {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 6px;
-  color: var(--color-a8);
+  color: inherit;
   font-size: 14px;
 }
 
@@ -738,14 +740,14 @@ html.dark-theme {
 
 .footer {
   grid-area: footer;
-  background-color: var(--color-2c);
+  background-color: var(--color-footer-bg);
   min-height: 200px;
   color: var(--color-footer-text);
 }
 
 .footer__top {
   padding: 32px 17px;
-  border-bottom: 1px solid var(--color-46);
+  border-bottom: 1px solid var(--color-footer-line);
 }
 
 .footer__bottom {
@@ -769,7 +771,7 @@ html.dark-theme {
 }
 
 .footer__links-title {
-  font-family: 'Play', sans-serif;
+  font-family: "Play", sans-serif;
   font-size: 16px;
   color: inherit;
   margin-bottom: 12px;
@@ -1193,7 +1195,7 @@ body.lock {
     left: 0;
     height: 10%;
     width: 100%;
-    background-color: var(--color-black);
+    background-color: var(--color-header-logo);
     -webkit-transition: top 0.3s, -webkit-transform 0.3s;
     transition: top 0.3s, -webkit-transform 0.3s;
     -o-transition: transform 0.3s, top 0.3s;
@@ -1301,7 +1303,7 @@ body.lock {
 
   .footer__bottom-links {
     padding-top: 24px;
-    border-top: 1px solid var(--color-46);
+    border-top: 1px solid var(--color-footer-line);
     margin-bottom: 14px;
   }
 
