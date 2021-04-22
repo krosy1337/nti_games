@@ -350,7 +350,6 @@ html.dark-theme {
 
 .main__game-icon-img_csgo {
   background-image: var(--csgo-icon);
-  background-image: webkit-var(--csgo-icon);
 }
 
 .main__game-icon-img_dota {
