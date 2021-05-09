@@ -17,20 +17,19 @@
 asgiref==3.3.4<br>
 Authlib==0.15.3<br>
 certifi==2020.12.5<br>
-cffi==1.14.5
-chardet==4.0.0
-cryptography==3.4.7
-Django==3.2.1
-djangorestframework==3.12.4
-idna==2.10
-pycparser==2.20
-python-dotenv==0.17.1
-pytz==2021.1
-requests==2.25.1
-sqlparse==0.4.1
-typing-extensions==3.10.0.0
+cffi==1.14.5<br>
+chardet==4.0.0<br>
+cryptography==3.4.7<br>
+Django==3.2.1<br>
+djangorestframework==3.12.4<br>
+idna==2.10<br>
+pycparser==2.20<br>
+python-dotenv==0.17.1<br>
+pytz==2021.1<br>
+requests==2.25.1<br>
+sqlparse==0.4.1<br>
+typing-extensions==3.10.0.0<br>
 urllib3==1.26.4
-
 
 
 Чтобы запустить файл на localhost, необходимо прописать команду в терминале, в корневой директории проекта:
