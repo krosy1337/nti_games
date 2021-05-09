@@ -13,7 +13,7 @@
 pip3 install -r requirements.txt
 
 *или установить пакеты вручную:
-
+`
 -asgiref==3.3.4
 -Authlib==0.15.3
 -certifi==2020.12.5
@@ -30,7 +30,7 @@ pip3 install -r requirements.txt
 -sqlparse==0.4.1
 -typing-extensions==3.10.0.0
 -urllib3==1.26.4
-
+`
 
 
 Чтобы запустить файл на localhost, необходимо прописать команду в терминале, в корневой директории проекта:
