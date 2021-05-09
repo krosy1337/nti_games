@@ -32,12 +32,5 @@ typing-extensions==3.10.0.0<br>
 urllib3==1.26.4
 
 
-pip3 install django<br>
-pip3 install python-dotenv<br>
-pip3 install Authlib<br>
-pip3 install requests<br>
-pip3 install djangorestframework
-
-
 Чтобы запустить файл на localhost, необходимо прописать команду в терминале, в корневой директории проекта:
 `python3 manage.py runserver --insecure`
