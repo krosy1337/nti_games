@@ -4,6 +4,8 @@
 
 [document](https://docs.google.com/document/d/10g8ZfVCprJ3EHGQp-NmC-LqGDdnqVUIMove23L5TXYk)
 
+[site](https://kr0sy.pythonanywhere.com)
+
 
 Версия интрепритатора: python-3.8.x или позже.
 Чтобы запустить проект необходимо переименовать файл 'env.example' в '.env' и заполнить данные в этом файле
