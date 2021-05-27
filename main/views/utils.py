@@ -8,8 +8,8 @@ load_dotenv()
 
 def generate_uri(request, rev):
     uri = request.build_absolute_uri(rev)
-    # if (not'https:' in uri) and int(os.environ.get("PRODUCTION")):
-    #     uri = uri.replace('http:', 'https:')
+    if (not'https:' in uri) and int(os.environ.get("PRODUCTION")):
+        uri = uri.replace('http:', 'https:')
     return uri
 
 

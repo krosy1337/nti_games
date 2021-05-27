@@ -13,6 +13,8 @@ from .utils import generate_uri
 
 class AuthLoginBlizzard(APIView):
     def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('home')
         redirect_uri = generate_uri(request, reverse('blizzard_auth'))
 
         uri, state = OAuth2Session(settings.AUTHLIB_OAUTH_CLIENTS['blizzard']['client_id'],
@@ -24,6 +26,8 @@ class AuthLoginBlizzard(APIView):
 
 class AuthCompleteBlizzard(APIView):
     def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('home')
         token = requests.post(settings.BLIZZARD_API_TOKEN_URL, data={
             'grant_type': 'authorization_code',
             'scope': 'openid',
@@ -47,6 +51,8 @@ class AuthCompleteBlizzard(APIView):
 
 class LogoutBlizzard(APIView):
     def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('home')
         request.user.talantuser.blizzard_access_token = None
         request.user.talantuser.blizzard_battletag = None
         request.user.talantuser.blizzard_id = None

@@ -11,6 +11,8 @@ from rest_framework.views import APIView
 
 class AuthLoginSteam(APIView):
     def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('home')
         redirect_uri = generate_uri(request, reverse('steam_auth'))
         params = {
             'openid.ns': settings.OPEN_ID_NS,
@@ -27,6 +29,8 @@ class AuthLoginSteam(APIView):
 
 class AuthCompleteSteam(APIView):
     def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('home')
         request.user.talantuser.steam_openid = request.query_params['openid.identity']
         request.user.talantuser.steam_id = int(request.query_params['openid.identity'].split('/')[-1])
         request.user.talantuser.save()
@@ -36,14 +40,25 @@ class AuthCompleteSteam(APIView):
 
 class LogoutSteam(APIView):
     def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('home')
         request.user.talantuser.steam_openid = ''
         request.user.talantuser.steam_id = None
         request.user.talantuser.save()
 
         request.user.talantuser.cs_result.result = False
         request.user.talantuser.cs_result.result_str = None
+        request.user.talantuser.cs_result.result_big_str = None
+        request.user.talantuser.cs_result.result_json = "{}"
+        request.user.talantuser.cs_result.result_num = None
+        request.user.talantuser.cs_result.error = None
+
         request.user.talantuser.dota_result.result = False
         request.user.talantuser.dota_result.result_str = None
+        request.user.talantuser.dota_result.result_big_str = None
+        request.user.talantuser.dota_result.result_json = None
+        request.user.talantuser.dota_result.result_num = None
+        request.user.talantuser.dota_result.error = None
 
         request.user.talantuser.cs_result.save()
         request.user.talantuser.dota_result.save()

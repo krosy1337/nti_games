@@ -1,5 +1,12 @@
 from django.urls import path, include
+
+from analytics.csgo import algo_csgo
+from analytics.dota import algo_dota
+from analytics.overwatch import algo_overwatch
+
+
 from .views import analyse, pages, steam, talent, blizzard
+
 
 urlpatterns = [
     path('', pages.home, name='home'),
@@ -20,7 +27,7 @@ urlpatterns = [
     path('blizzard_logout', blizzard.LogoutBlizzard.as_view(), name='blizzard_logout'),
 
 
-    path('analyse_csgo', analyse.analyse_csgo, name="analyse_csgo"),
-    path('analyse_dota', analyse.analyse_dota, name="analyse_dota"),
-    path('analyse_overwatch', analyse.analyse_overwatch, name="analyse_overwatch"),
+    path('analyse_csgo', algo_csgo.csgo_start_analysing, name="analyse_csgo"),
+    path('analyse_dota', algo_dota.dota_start_analysing, name="analyse_dota"),
+    path('analyse_overwatch', algo_overwatch.overvatch_start_analysing, name="analyse_overwatch"),
 ]
