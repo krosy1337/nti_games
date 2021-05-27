@@ -132,6 +132,7 @@ OPEN_ID_NS = 'http://specs.openid.net/auth/2.0'
 OPEN_ID_CLAIMED_ID = 'http://specs.openid.net/auth/2.0/identifier_select'
 OPEN_ID_IDENTITY = 'http://specs.openid.net/auth/2.0/identifier_select'
 FORMAT_STEAM_AUTH_URL = 'https://steamcommunity.com/openid/login?{}'
+STEAM_API_KEY = 'D88C61EA4559B5E9BF89CAF226383049'
 
 # Blizzard
 AUTHLIB_OAUTH_CLIENTS = {
