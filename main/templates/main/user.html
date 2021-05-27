@@ -7,12 +7,14 @@
 
 	<meta charset="utf-8">
 
-	<link rel="stylesheet" href="{% static 'main/user/css/style.min.css' %}">
+	<link rel="stylesheet" href="{% static 'main/user/css/style.css' %}">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="description" content="Сервис для анализа игровой статистики в командных онлайн-играх">
 
+    <meta property="og:url" content="https://gamestats.kruzhok.org/user" />
+    <meta property="og:type" content="website" />
     <meta property="og:image" content="https://raw.githubusercontent.com/Danzo0l/trehochko/main/main/static/main/home/img/meta-image.jpg" />
 	<meta property="og:title" content="Мой уровень командности: {{ score }}" />
 	<meta property="og:description" content="Talent | Game stats Узнай свой уровень командности" />
@@ -20,8 +22,32 @@
 	<link rel="shortcut icon" href="{% static 'main/user/img/icons/favicon.ico' %}" type="image/x-icon">
 	<link rel="icon" href="{% static 'main/user/img/icons/favicon.ico' %}" type="image/x-icon">
 	<script type="text/javascript" src="https://vk.com/js/api/share.js?93" charset="windows-1251"></script>
-	<script src="{% static 'main/user/js/script.min.js' %}" defer></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v10.0" nonce="Xfemrlo9"></script>
+    <script defer>
+        let temp_csrf_token = "{{ csrf_token }}"
+        let temp_cs_start_url = "{% url 'analyse_csgo' %}"
+        let temp_dota_start_url = "{% url 'analyse_dota' %}"
+        let temp_overwatch_start_url = "{% url 'analyse_overwatch' %}"
+    </script>
+    <script src="{% static 'main/user/js/analyse.js' %}" defer></script>
+    <script src="{% static 'main/user/js/script.js' %}" defer></script>
+{#    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v10.0" nonce="Xfemrlo9"></script>#}
+
+    <style>
+        html.light-theme {
+            --steam-icon: url("{% static 'main/user/img/icons/steam-icon.svg' %}");
+            --blizzard-icon: url("{% static 'main/user/img/icons/blizzard-icon.svg' %}");
+            --csgo-icon: url("{% static 'main/user/img/icons/csgo-icon.svg' %}");
+            --overwatch-icon: url("{% static 'main/user/img/icons/overwatch-icon.svg' %}");
+            --dota-icon: url("{% static 'main/user/img/icons/dota-icon.svg' %}");
+        }
+        html.dark-theme {
+            --steam-icon: url("{% static 'main/user/img/icons/steam-dark-icon.svg' %}");
+            --blizzard-icon: url("{% static 'main/user/img/icons/blizzard-dark-icon.svg' %}");
+            --csgo-icon: url("{% static 'main/user/img/icons/csgo-dark-icon.svg' %}");
+            --overwatch-icon: url("{% static 'main/user/img/icons/overwatch-dark-icon.svg' %}");
+            --dota-icon: url("{% static 'main/user/img/icons/dota-dark-icon.svg' %}");
+        }
+    </style>
 </head>
 
 <body>
@@ -133,9 +159,11 @@
 						<script type="text/javascript">
 							document.write(VK.Share.button(
 								{
-								url: 'http://kr0sy.pythonanywhere.com/',
+								url: 'https://gamestats.kruzhok.org/user',
 								title: 'Мой уровень командности {{ score }}',
 								image: 'https://raw.githubusercontent.com/Danzo0l/trehochko/main/main/static/main/home/img/meta-image.jpg',
+                                description: 'Talent | Game stats Узнай свой уровень командности',
+                                desc: 'Talent | Game stats Узнай свой уровень командности',
 							},
 							{
 								type: 'custom',
@@ -152,7 +180,20 @@
 								d="M26.4089 0H5.59111C2.5037 0 0 2.5037 0 5.59111V26.4089C0 29.4963 2.5037 32 5.59111 32H16V19.9111L12.1185 19.8815V14.5778H16V12.8C16.237 6.01481 21.5407 5.71852 21.5407 5.71852H26.3704L26.3111 11.0222H22.1037C21.0963 11.0815 21.0074 12.237 21.0074 12.237V14.5778H21.1852H26.3704V19.9111H21.0844V32H26.4089C29.4963 32 32 29.4963 32 26.4089V5.59111C32 2.5037 29.4963 0 26.4089 0Z"
 								fill="#4F9B97" />
 						</svg>
-                        <div class="fb-share-button" data-href="http://kr0sy.pythonanywhere.com/user" data-layout="button" data-size="small"><a class="share__btn side-btn fb-xfbml-parse-ignore" rel="noopener" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fkr0sy.pythonanywhere.com%2Fuser&amp;src=sdkpreparse">Поделиться</a></div>
+                        <div id="fb-root"></div>
+                        <script>
+                            (function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                            fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));
+                        </script>
+
+                        <!-- Your share button code -->
+                        <div class="fb-share-button" data-href="https://gamestats.kruzhok.org/user" data-layout="button" data-size="small"><a class="share__btn side-btn fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgamestats.kruzhok.org%2Fuser&amp;src=sdkpreparse">Поделиться</a></div>
+{#                        <div class="fb-share-button" data-href="http://kr0sy.pythonanywhere.com/user" data-layout="button" data-size="small"><a class="share__btn side-btn fb-xfbml-parse-ignore" rel="noopener" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fkr0sy.pythonanywhere.com%2Fuser&amp;src=sdkpreparse">Поделиться</a></div>#}
 					</div>
 				</div>
 			</div>
@@ -193,12 +234,14 @@
 								    </div>
                                     {% if user.talantuser.cs_result.result %}
                                         <span class="main__game-kf">{{ user.talantuser.cs_result.result_str }}</span>
+                                    {% elif user.talantuser.cs_result.error %}
+                                        <span class="main__game-kf">{{ user.talantuser.cs_result.error }}</span>
                                     {% endif %}
 							</div>
 							<div class="main__game-buttons">
                                 {% if user.talantuser.steam_id %}
                                     {% if user.talantuser.cs_result.result %}
-                                        <a class="main__game-button main__game-button_r analyse-btn" href="{% url 'analyse_csgo' %}" aria-label="Обновить статистику">
+                                        <button class="main__game-button main__game-button_r analyse-btn analyse_csgo" href="{% url 'analyse_csgo' %}" aria-label="Обновить статистику">
                                             <svg class="main__game-button-icon" width="41" height="41" viewBox="0 0 41 41"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -206,7 +249,7 @@
                                                 <path
                                                     d="M20.5 0C9.19297 0 0 9.19297 0 20.5C0 31.807 9.19297 41 20.5 41C31.807 41 41 31.807 41 20.5C41 9.19297 31.807 0 20.5 0ZM20.5 38.7578C10.4102 38.7578 2.24219 30.5898 2.24219 20.5C2.24219 10.4102 10.4102 2.24219 20.5 2.24219C30.5898 2.24219 38.7578 10.4102 38.7578 20.5C38.7578 30.5898 30.5898 38.7578 20.5 38.7578Z" />
                                             </svg>
-                                        </a>
+                                        </button>
                                         <button class="main__game-button main__game-button_o"
                                             aria-label="Открыть подробную статистику">
                                             <svg class="main__game-button-icon" width="41" height="41" viewBox="0 0 41 41"
@@ -218,9 +261,28 @@
                                             </svg>
                                         </button>
                                     {% else %}
-                                        <a class="main__game-button main__game-button_a analyse-btn" href="{% url 'analyse_csgo' %}">
+                                        <button class="main__game-button main__game-button_a analyse-btn analyse_csgo" href="{% url 'analyse_csgo' %}">
                                             анализ
-                                        </a>
+                                        </button>
+                                        <button class="main__game-button main__game-button_r analyse-btn analyse_csgo hidden" href="{% url 'analyse_csgo' %}" aria-label="Обновить статистику">
+                                            <svg class="main__game-button-icon" width="41" height="41" viewBox="0 0 41 41"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M21.4628 7.7254C17.6694 7.7254 14.1022 9.5012 11.796 12.4444L8.5 10.5V21.5L17.5 16L14.5 14C16.5 11.5 19.0188 10.4034 21.4628 10.4034C27 10.4034 31 14.6754 31 20C31 25.3246 27 29.5 21.4628 29.5V32.2798C28.2332 32.2746 33.74 26.7678 33.74 20C33.74 13.2322 28.2332 7.7254 21.4628 7.7254Z" />
+                                                <path
+                                                    d="M20.5 0C9.19297 0 0 9.19297 0 20.5C0 31.807 9.19297 41 20.5 41C31.807 41 41 31.807 41 20.5C41 9.19297 31.807 0 20.5 0ZM20.5 38.7578C10.4102 38.7578 2.24219 30.5898 2.24219 20.5C2.24219 10.4102 10.4102 2.24219 20.5 2.24219C30.5898 2.24219 38.7578 10.4102 38.7578 20.5C38.7578 30.5898 30.5898 38.7578 20.5 38.7578Z" />
+                                            </svg>
+                                        </button>
+                                        <button class="main__game-button main__game-button_o hidden"
+                                            aria-label="Открыть подробную статистику">
+                                            <svg class="main__game-button-icon" width="41" height="41" viewBox="0 0 41 41"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M20.5 0C9.19297 0 0 9.19297 0 20.5C0 31.807 9.19297 41 20.5 41C31.807 41 41 31.807 41 20.5C41 9.19297 31.807 0 20.5 0ZM20.5 38.7578C10.4102 38.7578 2.24219 30.5898 2.24219 20.5C2.24219 10.4102 10.4102 2.24219 20.5 2.24219C30.5898 2.24219 38.7578 10.4102 38.7578 20.5C38.7578 30.5898 30.5898 38.7578 20.5 38.7578Z" />
+                                                <path
+                                                    d="M32.5437 15.1828L20.5 27.2266L8.45625 15.1828L6.88672 16.7523L18.9305 28.7961L20.5 30.3656L22.0695 28.7961L34.1133 16.7523L32.5437 15.1828Z" />
+                                            </svg>
+                                        </button>
                                     {% endif %}
                                 {% endif %}
 							</div>
@@ -230,19 +292,19 @@
                                 <ul class="game__stats">
                                     <li class="game__stat">
                                         <span class="game__stat-name">KD: </span>
-                                        <span class="game__stat-value">1,23</span>
+                                        <span class="game__stat-value">{{ kd }}</span>
                                     </li>
                                     <li class="game__stat">
                                         <span class="game__stat-name">Среднее количество очков за раунд: </span>
-                                        <span class="game__stat-value">1231</span>
+                                        <span class="game__stat-value">{{ avg_cs }}</span>
                                     </li>
                                     <li class="game__stat">
                                         <span class="game__stat-name">Частота MVP: </span>
-                                        <span class="game__stat-value">0,45232</span>
+                                        <span class="game__stat-value">{{ avg_mvp }}</span>
                                     </li>
                                     <li class="game__stat">
                                         <span class="game__stat-name">Частота закладки и обезвреживания бомбы: </span>
-                                        <span class="game__stat-value">21</span>
+                                        <span class="game__stat-value">{{ avg_plant_defuse }}</span>
                                     </li>
                                 </ul>
 						    </div>
@@ -256,12 +318,14 @@
 								</div>
                                 {% if user.talantuser.dota_result.result %}
                                     <span class="main__game-kf">{{ user.talantuser.dota_result.result_str }}</span>
+                                {% elif user.talantuser.dota_result.error %}
+                                        <span class="main__game-kf">{{ user.talantuser.dota_result.error }}</span>
                                 {% endif %}
 							</div>
 							<div class="main__game-buttons">
                                 {% if user.talantuser.steam_id %}
                                     {% if user.talantuser.dota_result.result %}
-                                        <a class="main__game-button main__game-button_r analyse-btn" href="{% url 'analyse_dota' %}" aria-label="Обновить статистику">
+                                        <button class="main__game-button main__game-button_r analyse-btn analyse_dota" href="{% url 'analyse_dota' %}" aria-label="Обновить статистику">
                                             <svg class="main__game-button-icon" width="41" height="41" viewBox="0 0 41 41"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -269,7 +333,7 @@
                                                 <path
                                                     d="M20.5 0C9.19297 0 0 9.19297 0 20.5C0 31.807 9.19297 41 20.5 41C31.807 41 41 31.807 41 20.5C41 9.19297 31.807 0 20.5 0ZM20.5 38.7578C10.4102 38.7578 2.24219 30.5898 2.24219 20.5C2.24219 10.4102 10.4102 2.24219 20.5 2.24219C30.5898 2.24219 38.7578 10.4102 38.7578 20.5C38.7578 30.5898 30.5898 38.7578 20.5 38.7578Z" />
                                             </svg>
-                                        </a>
+                                        </button>
                                         <button class="main__game-button main__game-button_o"
                                             aria-label="Открыть подробную статистику">
                                             <svg class="main__game-button-icon" width="41" height="41" viewBox="0 0 41 41"
@@ -281,34 +345,33 @@
                                             </svg>
                                         </button>
                                     {% else %}
-                                        <a class="main__game-button main__game-button_a analyse-btn" href="{% url 'analyse_dota' %}">
+                                        <button class="main__game-button main__game-button_a analyse-btn analyse_dota" href="{% url 'analyse_dota' %}">
 									    анализ
-								    </a>
+								    </button>
                                     {% endif %}
                                 {% endif %}
 							</div>
 						</div>
                         {% if user.talantuser.dota_result.result %}
                             <div class="game__body">
-							<ul class="game__stats">
+							    <ul class="game__stats">
 								<li class="game__stat">
-									<span class="game__stat-name">KD: </span>
-									<span class="game__stat-value">1,23</span>
+									<span class="game__stat-name">{{ comparing_skill }}</span>
 								</li>
 								<li class="game__stat">
-									<span class="game__stat-name">Среднее количество очков за раунд: </span>
-									<span class="game__stat-value">1231</span>
+									<span class="game__stat-name">Участие в коммандных убийствах: </span>
+									<span class="game__stat-value">{{ frequency_fight }}</span>
 								</li>
 								<li class="game__stat">
 									<span class="game__stat-name">Любимая роль: </span>
-									<span class="game__stat-value">support</span>
+									<span class="game__stat-value">{{ role }}</span>
 								</li>
 								<li class="game__stat">
-									<span class="game__stat-name">Уровень пользы в игре: </span>
-									<span class="game__stat-value">0,56</span>
+									<span class="game__stat-name">Старание в играх: </span>
+									<span class="game__stat-value">{{ benefit }}</span>
 								</li>
 							</ul>
-						</div>
+						    </div>
                         {% endif %}
 					</li>
 					<li class="main__game game game_na main-block">
@@ -324,7 +387,7 @@
 							<div class="main__game-buttons">
                                 {% if user.talantuser.blizzard_id %}
                                     {% if user.talantuser.overwatch_result.result %}
-                                        <a class="main__game-button main__game-button_r analyse-btn" href="{% url 'analyse_overwatch' %}" aria-label="Обновить статистику">
+                                        <button class="main__game-button main__game-button_r analyse-btn analyse_overwatch" href="{% url 'analyse_overwatch' %}" aria-label="Обновить статистику">
                                             <svg class="main__game-button-icon" width="41" height="41" viewBox="0 0 41 41"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -332,7 +395,7 @@
                                                 <path
                                                     d="M20.5 0C9.19297 0 0 9.19297 0 20.5C0 31.807 9.19297 41 20.5 41C31.807 41 41 31.807 41 20.5C41 9.19297 31.807 0 20.5 0ZM20.5 38.7578C10.4102 38.7578 2.24219 30.5898 2.24219 20.5C2.24219 10.4102 10.4102 2.24219 20.5 2.24219C30.5898 2.24219 38.7578 10.4102 38.7578 20.5C38.7578 30.5898 30.5898 38.7578 20.5 38.7578Z" />
                                             </svg>
-                                        </a>
+                                        </button>
                                         <button class="main__game-button main__game-button_o"
                                             aria-label="Открыть подробную статистику">
                                             <svg class="main__game-button-icon" width="41" height="41" viewBox="0 0 41 41"
@@ -344,9 +407,9 @@
                                             </svg>
                                         </button>
                                     {% else %}
-                                            <a class="main__game-button main__game-button_a analyse-btn" href="{% url 'analyse_overwatch' %}">
+                                            <button class="main__game-button main__game-button_a analyse-btn analyse_overwatch" href="{% url 'analyse_overwatch' %}">
                                             анализ
-                                        </a>
+                                        </button>
                                     {% endif %}
                                 {% endif %}
 							</div>

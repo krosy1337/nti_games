@@ -107,23 +107,23 @@ if (burger) {
 	})
 }
 
-function analyseHandler(e) {
-	e.preventDefault()
-	const buttonsContainer = this.closest('.main__game-buttons')
-	buttonsContainer.querySelectorAll('.main__game-button').forEach(btn => {
-		btn.style.display = 'none'
-	})
-	buttonsContainer.insertAdjacentHTML('afterbegin', '<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>')
-	this.removeEventListener('click', analyseHandler)
-
-	setTimeout(() => {
-		this.click()
-	}, 3000)
-}
-
-const analyseButtons = document.querySelectorAll('.analyse-btn')
-
-analyseButtons.forEach(btn => {
-	btn.addEventListener('click', analyseHandler)
-})
+// function analyseHandler(e) {
+// 	e.preventDefault()
+// 	const buttonsContainer = this.closest('.main__game-buttons')
+// 	buttonsContainer.querySelectorAll('.main__game-button').forEach(btn => {
+// 		btn.style.display = 'none'
+// 	})
+// 	buttonsContainer.insertAdjacentHTML('afterbegin', '<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>')
+// 	this.removeEventListener('click', analyseHandler)
+//
+// 	setTimeout(() => {
+// 		this.click()
+// 	}, 3000)
+// }
+//
+// const analyseButtons = document.querySelectorAll('.analyse-btn')
+//
+// analyseButtons.forEach(btn => {
+// 	btn.addEventListener('click', analyseHandler)
+// })
 

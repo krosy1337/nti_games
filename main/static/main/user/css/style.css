@@ -128,11 +128,6 @@ html.light-theme {
   --color-ti-circle: #34a853;
   --color-ll-circle: #4285f4;
   --color-tl-circle: #ea4335;
-  --steam-icon: url("../img/icons/steam-icon.svg");
-  --blizzard-icon: url("../img/icons/blizzard-icon.svg");
-  --csgo-icon: url("../img/icons/csgo-icon.svg");
-  --dota-icon: url("../img/icons/dota-icon.svg");
-  --overwatch-icon: url("../img/icons/overwatch-icon.svg");
 }
 
 html.dark-theme {
@@ -164,7 +159,6 @@ html.dark-theme {
   --steam-icon: url("../img/icons/steam-dark-icon.svg");
   --blizzard-icon: url("../img/icons/blizzard-dark-icon.svg");
   --csgo-icon: url("../img/icons/csgo-dark-icon.svg");
-  --dota-icon: url("../img/icons/dota-dark-icon.svg");
   --overwatch-icon: url("../img/icons/overwatch-dark-icon.svg");
 }
 
@@ -301,6 +295,10 @@ html.dark-theme {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.main__game-button.hidden {
+  display: none;
 }
 
 .main__game-button_o.active {

@@ -1,0 +1,58 @@
+{
+  "normal": {
+    "allDamageDoneAvgPer10Min": 9470.0421686747,
+    "barrierDamageDoneAvgPer10Min": 2071.820542168675,
+    "deathsAvgPer10Min": 6.926927710843374,
+    "eliminationsAvgPer10Min": 19.05373493975903,
+    "finalBlowsAvgPer10Min": 9.315301204819276,
+    "healingDoneAvgPer10Min": 2962.7883734939755,
+    "heroDamageDoneAvgPer10Min": 7134.343373493976,
+    "objectiveKillsAvgPer10Min": 5.6375301204819275,
+    "objectiveTimeAvgPer10Min": 49.19277108433735,
+    "soloKillsAvgPer10Min": 2.272831325301205,
+    "timeSpentOnFireAvgPer10Min": 77.82530120481928,
+    "count": 1.0
+  },
+  "damage": {
+    "allDamageDoneAvgPer10Min": 9507.736334787556,
+    "barrierDamageDoneAvgPer10Min": 2003.3725479596874,
+    "deathsAvgPer10Min": 8.599785611392551,
+    "eliminationsAvgPer10Min": 20.911498324839368,
+    "finalBlowsAvgPer10Min": 12.314259446749181,
+    "healingDoneAvgPer10Min": 373.1081027194793,
+    "heroDamageDoneAvgPer10Min": 7546.052806897628,
+    "objectiveKillsAvgPer10Min": 5.647246755075421,
+    "objectiveTimeAvgPer10Min": 35.25838356812505,
+    "soloKillsAvgPer10Min": 3.822178113569381,
+    "timeSpentOnFireAvgPer10Min": 81.47440876289758,
+    "count": 1.0
+  },
+  "support": {
+    "allDamageDoneAvgPer10Min": 5349.426135466532,
+    "barrierDamageDoneAvgPer10Min": 1134.4010443226673,
+    "deathsAvgPer10Min": 7.392293741776547,
+    "eliminationsAvgPer10Min": 14.482741370622321,
+    "finalBlowsAvgPer10Min": 5.347906403096218,
+    "healingDoneAvgPer10Min": 6522.706002771478,
+    "heroDamageDoneAvgPer10Min": 4244.295367150977,
+    "objectiveKillsAvgPer10Min": 4.428456181237927,
+    "objectiveTimeAvgPer10Min": 44.203549732650266,
+    "soloKillsAvgPer10Min": 1.2040026979927776,
+    "timeSpentOnFireAvgPer10Min": 76.24021408975116,
+    "count": 1.0
+  },
+  "tank": {
+    "allDamageDoneAvgPer10Min": 9678.634824490493,
+    "barrierDamageDoneAvgPer10Min": 2560.789108939186,
+    "deathsAvgPer10Min": 7.345011516918151,
+    "eliminationsAvgPer10Min": 20.316123442501148,
+    "finalBlowsAvgPer10Min": 9.46794065378209,
+    "healingDoneAvgPer10Min": 554.9908651283557,
+    "heroDamageDoneAvgPer10Min": 7143.35430588216,
+    "objectiveKillsAvgPer10Min": 6.167499295757397,
+    "objectiveTimeAvgPer10Min": 64.86678465281858,
+    "soloKillsAvgPer10Min": 2.0291171165654194,
+    "timeSpentOnFireAvgPer10Min": 78.60402683878765,
+    "count": 1.0
+  }
+}
