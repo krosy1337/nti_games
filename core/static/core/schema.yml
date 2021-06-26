@@ -1,0 +1,328 @@
+openapi: 3.0.2
+info:
+  title: 'NTI-Games API'
+  version: '1.1.0'
+paths:
+  /api/auth/login/talent/:
+    get:
+      operationId: login_talent
+      description: 'Авторизация через talent.kruzhok.org'
+      responses:
+        '302':
+          description: 'No response body'
+      security:
+      - cookieAuth: []
+      tags:
+      - auth
+  /api/logout/talent/:
+    get:
+      operationId: logout_talent
+      description: 'Выход из учетной записи'
+      responses:
+        '200':
+          description: 'No response body'
+      security:
+      - cookieAuth: []
+      tags:
+      - auth
+  /api/auth/login/steam/:
+    get:
+      operationId: login_steam
+      description: 'Привязка Steam к учетной записи'
+      responses:
+        '302':
+          description: 'No response body'
+      security:
+      - cookieAuth: []
+      tags:
+      - auth
+  /api/logout/steam/:
+    get:
+      operationId: logout_steam
+      description: 'Отвязка Steam от учетной записи'
+      responses:
+        '200':
+          description: 'No response body'
+      security:
+      - cookieAuth: []
+      tags:
+      - auth
+  /api/auth/login/blizzard/:
+    get:
+      operationId: login_blizzard
+      description: 'Привязка Blizzard к учетной записи'
+      responses:
+        '302':
+          description: 'No response body'
+      security:
+      - cookieAuth: []
+      tags:
+      - auth
+  /api/logout/blizzard/:
+    get:
+      operationId: logout_blizzard
+      description: 'Отвязка Blizzard от учетной записи'
+      responses:
+        '200':
+          description: 'No response body'
+      security:
+      - cookieAuth: []
+      tags:
+      - auth
+  /api/analyse/dota/result/:
+    get:
+      operationId: dota_result
+      description: 'Результат анализа для Dota'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DotaResult'
+          description: ''
+      security:
+      - cookieAuth: []
+      tags:
+      - analyse
+  /api/analyse/cs/result/:
+    get:
+      operationId: cs_result
+      description: 'Результат анализа для Cs'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CsResult'
+          description: ''
+      security:
+      - cookieAuth: []
+      tags:
+      - analyse
+  /api/analyse/status/:
+    get:
+      operationId: task_status
+      description: 'Состояние задачи добавленной в очередь'
+      parameters:
+      - in: query
+        name: task
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      security:
+      - cookieAuth: []
+      tags:
+      - analyse
+  /api/user/:
+    get:
+      operationId: user
+      description: 'Данные авторизованного пользователя'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      security:
+      - cookieAuth: []
+      tags:
+      - user
+  /api/user/games/:
+    get:
+      operationId: user_games
+      description: 'Дополнительные данные авторизованного пользователя'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGames'
+          description: ''
+      security:
+      - cookieAuth: []
+      tags:
+      - user
+  /api/analyse/dota/start/:
+    post:
+      operationId: dota_start
+      description: 'Добавить в очередь задачу для анализа профиля Dota'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStart'
+          description: ''
+      security:
+      - cookieAuth: []
+      tags:
+      - analyse
+  /api/analyse/cs/start/:
+    post:
+      operationId: cs_start
+      description: 'Добавить в очередь задачу для анализа профиля Cs'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStart'
+          description: ''
+      security:
+      - cookieAuth: []
+      tags:
+      - analyse
+components:
+  schemas:
+    User:
+      type: object
+      description: 'Данные пользователя'
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+    UserGames:
+      type: object
+      description: 'Дополнительная информация пользователя'
+      properties:
+        pk:
+          type: integer
+          description: 'Id'
+        steam_id:
+          type: integer
+          nullable: true
+          example: '12345678'
+        blizzard_id:
+          type: integer
+          nullable: true
+          example: 12345678
+        blizzard_battletag:
+          type: string
+          nullable: true
+          example: 'Ilon#1234'
+        dota_result:
+          allOf:
+          - $ref: '#/components/schemas/DotaResult'
+        cs_result:
+          allOf:
+          - $ref: '#/components/schemas/CsResult'
+        dota_task:
+          type: string
+          nullable: true
+          description: 'Идентификатор задачи анализа Dota'
+        cs_task:
+          type: string
+          nullable: true
+          description: 'Идентификатор задачи анализа Cs'
+    DotaResult:
+      type: object
+      description: 'Результат анализа Dota'
+      properties:
+        error:
+          type: string
+          nullable: true
+          description: 'Сообщение об ошибке во время выполнения анализа. Если ошибки нет, а result=false - анализ ни разу не запускался'
+        result:
+          type: boolean
+          description: 'Получилось ли проанализировать, true - результат есть, false - ошибка'
+        result_num:
+          type: integer
+          nullable: true
+          description: 'Оценка командности игрока в виде числа в диапазоне от 0 до 100'
+        result_str:
+          type: string
+          nullable: true
+          description: 'Комментарий к оценке'
+        result_big_str:
+          type: string
+          nullable: true
+          description: 'Дополнительная информация по игроку'
+        result_json:
+          type: string
+          nullable: true
+          description: 'Полный результат анализа'
+    CsResult:
+      type: object
+      description: 'Результат анализа Cs'
+      properties:
+        error:
+          type: string
+          nullable: true
+          description: 'Сообщение об ошибке во время выполнения анализа. Если ошибки нет, а result=false - анализ ни разу не запускался'
+        result:
+          type: boolean
+          description: 'Получилось ли проанализировать, true - результат есть, false - ошибка'
+        result_num:
+          type: integer
+          nullable: true
+          description: 'Оценка командности игрока в виде числа в диапазоне от 0 до 100'
+        result_str:
+          type: string
+          nullable: true
+          description: 'Комментарий к оценке'
+        result_big_str:
+          type: string
+          nullable: true
+          description: 'Дополнительная информация по игроку'
+        result_json:
+          type: string
+          nullable: true
+          description: 'Полный результат анализа'
+    Task:
+      type: object
+      description: 'Состояние задачи'
+      properties:
+        status:
+          type: string
+          enum:
+          - 'PENDING'
+          - 'SUCCESS'
+          - 'FAILURE'
+    TaskStart:
+      type: object
+      description: 'Информация о задаче добавленной в очередь'
+      properties:
+        error:
+          type: string
+          nullable: true
+          description: 'Сообщение об ошибке'
+        task_id:
+          type: string
+          nullable: true
+          description: 'Идентификатор задачи'
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

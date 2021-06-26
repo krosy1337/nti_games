@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="light-theme" lang="ru">
+
+<head>
+	<title>Кружок ремейк</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+	<script src="{% static 'core/js/themeSwitch.js' %}" type="text/javascript"></script>
+
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<script type="module" src="{% static 'core/js/script.js' %}" defer></script>
+</head>
+
+<body>
+<div class="wrapper">
+
+<main class="main error">
+	<div class="main__inner">
+		<div class="container">
+			<img class="main__bg-figure main__bg-figure_1" src="{% static 'core/img/1.svg' %}" alt="figure">
+                <img class="main__bg-figure main__bg-figure_2" src="{% static 'core/img/2.svg' %}" alt="figure">
+                <img class="main__bg-figure main__bg-figure_3" src="{% static 'core/img/3.svg' %}" alt="figure">
+		</div>
+		<div class="content error">
+			<div class="content__contanier contanier">
+				<div class="content-error">
+					<div class="error-contanier">
+						<span class="content-error__span">:(</span>
+						<h3 class="content-error__title">404</h3>
+					</div>
+					<p class="content-error__description">Похоже, что такой страницы нет</p>
+          <a class="on-home-button" href="{% url 'index' %}">На гланую</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+
+{% include 'core/footer.html' %}
+
+
+		<div class="layout">
+
+		</div>
+	</div>
+</body>
+
+</html>

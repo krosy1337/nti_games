@@ -1,0 +1,50 @@
+{% load static %}
+<header class="header">
+    <div class="header__inner container">
+        <button class="header__menu-btn menu-btn">
+            <div class="menu-btn__user">
+                <div class="menu-btn__user-avatar">
+                    <img class="menu-btn__user-avatar-image" src="{% static 'core/img/userIcon.svg' %}"
+                         alt="user avatar">
+                    <div class="menu-btn__user-tooltip tooltip">
+                        <div class="tooltip__btn">
+                            <img class="menu-btn__user-avatar-medal" src="{% static 'core/img/userMedal.svg' %}"
+                                 alt="user medal">
+                        </div>
+
+                        <div class="tooltip__content">
+                            <div class="tooltip__inner">
+                                <div class="tooltip__row">
+                                    <img class="tooltip__image" src="{% static 'core/img/kdMedal.svg' %}"
+                                         alt="user medal">
+                                    <img class="tooltip__image" src="{% static 'core/img/userMedal.svg' %}"
+                                         alt="user medal">
+                                    <img class="tooltip__image" src="{% static 'core/img/silverMedal.svg' %}"
+                                         alt="user medal">
+                                    <img class="tooltip__image" src="{% static 'core/img/bronzeMedal.svg' %}"
+                                         alt="user medal">
+                                </div>
+                                <div class="tooltip__text">
+                                    Это медали вроде. Шо круто, шо не круто, вооот...
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <span class="menu-btn__user-name">{{ user.first_name }}</span>
+            </div>
+            <svg class="menu-btn__arrow" width="10" height="16" viewBox="0 0 10 16" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.82348 7.9963L0.870587 14.9492C0.630219 15.1896 0.630219 15.5793 0.870587 15.8198C1.11103 16.0601 1.50075 16.0601 1.74115 15.8198L9.12932 8.43158C9.36965 8.19118 9.36965 7.80142 9.12932 7.56102L1.74115 0.172851C1.49656 -0.0633678 1.10681 -0.0565853 0.870587 0.188003C0.640176 0.426603 0.640176 0.80485 0.870587 1.04341L7.82348 7.9963Z"/>
+            </svg>
+        </button>
+        <a class="header__logo logo">
+            <img class="logo__image" src="{% static 'core/img/talent_logo.svg' %}" alt="talent logo">
+            <span class="logo__text">Game stats</span>
+
+
+        </a>
+    </div>
+</header>

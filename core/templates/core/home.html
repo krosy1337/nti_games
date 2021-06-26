@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="light-theme" lang="ru">
+
+<head>
+    <title>Добро пожаловать</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script type="module" src="{% static 'core/js/script.js' %}" defer></script>
+</head>
+<body>
+<div class="wrapper">
+    <main class="main">
+        <div class="main__inner">
+            <div class="container">
+                <img class="main__bg-figure main__bg-figure_1" src="{% static 'core/img/1.svg' %}" alt="figure">
+                <img class="main__bg-figure main__bg-figure_2" src="{% static 'core/img/2.svg' %}" alt="figure">
+                <img class="main__bg-figure main__bg-figure_3" src="{% static 'core/img/3.svg' %}" alt="figure">
+            </div>
+
+            <div class="home-content">
+                <div class="home-content__container container">
+                    <h1 class="home-content__title">
+                        Хочешь узнать насколько ты командный игрок?
+                    </h1>
+                    <h2 class="home-content__subtitle">
+                        Присоединяйся!
+                    </h2>
+                    <a class="home-content__auth-link" href="{% url 'api_auth_login_talent' %}">
+                        <button class="home-content__auth">
+                        Авторизация
+                    </button>
+                    </a>
+                    <div class="home-content__talent">
+                        <img class="home-content__talent-logo" src="{% static 'core/img/talent_logo.svg' %}"
+                             alt="talent logo">
+                        <span class="home-content__talent-text">Талант</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include 'core/footer.html' %}
+</div>
+</body>
+</html>

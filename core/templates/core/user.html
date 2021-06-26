@@ -1,0 +1,363 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="light-theme" lang="ru">
+
+<head>
+    <title>Игровая статистика</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'core/img/favicon.ico' %}" type="image/x-icon">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script type="module" src="{% static 'core/js/script.js' %}" defer></script>
+    <script defer>
+        let temp_task_dota_id = null;
+        let temp_task_cs_id = null;
+        {% if user.talantuser.dota_task %}
+            temp_task_dota_id = "{{ user.talantuser.dota_task }}";
+        {% endif %}
+        {% if user.talantuser.cs_task %}
+        temp_task_cs_id = "{{ user.talantuser.cs_task }}";
+        {% endif %}
+        let temp_csrf_token = "{{ csrf_token }}";
+        let temp_dota_start_url = "{% url 'analyse-dota' %}";
+        let temp_cs_start_url = "{% url 'analyse-cs' %}";
+    </script>
+    <script type="module" src="{% static 'core/js/analyse.js' %}" defer></script>
+</head>
+
+<body>
+<div class="wrapper">
+    {% include 'core/header.html' %}
+    <main class="main">
+        <div class="main__inner">
+            <div class="container">
+                <img class="main__bg-figure main__bg-figure_1" src="{% static 'core/img/1.svg' %}" alt="figure">
+                <img class="main__bg-figure main__bg-figure_2" src="{% static 'core/img/2.svg' %}" alt="figure">
+                <img class="main__bg-figure main__bg-figure_3" src="{% static 'core/img/3.svg' %}" alt="figure">
+            </div>
+
+            <aside class="side">
+                <svg class="side__arrow" width="10" height="16" viewBox="0 0 10 16" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.82348 7.9963L0.870587 14.9492C0.630219 15.1896 0.630219 15.5793 0.870587 15.8198C1.11103 16.0601 1.50075 16.0601 1.74115 15.8198L9.12932 8.43158C9.36965 8.19118 9.36965 7.80142 9.12932 7.56102L1.74115 0.172851C1.49656 -0.0633678 1.10681 -0.0565853 0.870587 0.188003C0.640176 0.426603 0.640176 0.80485 0.870587 1.04341L7.82348 7.9963Z"/>
+                </svg>
+                <div class="side__user user">
+                    <div class="user__avatar user__el">
+                        <img class="user__avatar-image" src="{% static 'core/img/userIcon.svg' %}" alt="user avatar">
+                        <img class="user__avatar-medal" src="{% static 'core/img/userMedal.svg' %}" alt="user medal">
+                    </div>
+                    <div class="user__info user__el">
+            <span class="user__name">
+                {{ user.first_name }} {{ user.last_name }}
+            </span>
+                        <span class="user__talent-id">
+                Talent ID: {{ user.id }}
+            </span>
+                    </div>
+                    <a class="user__logout" href="{% url 'logout' %}">
+                        <img src="{% static 'core/img/logoutUser.svg' %}" alt="logout">
+                    </a>
+
+
+                </div>
+                <div class="side__accounts side__block">
+                    <div class="side__block-header">
+                        <h4 class="side__block-title">
+                            Аккаунты
+                        </h4>
+                        <button class="side__accounts-arrow">
+                            <svg class="" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M10.0002 0H8.00024V8.00024H0V10.0002H8.00024V18H10.0002V10.0002H18V8.00024H10.0002V0Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="side__block-body">
+                        {% if user.talantuser.steam_id %}
+                        <div class="side__account">
+                            <img class="side__account-img" src="{% static 'core/img/steam-icon.svg' %}"
+                                 alt="steam icon">
+                            <div class="side__account-info">
+                    <span class="side__account-name">
+                        {{ user.talantuser.steam_username }}
+                    </span>
+                                <span class="side__account-id">
+                        ID: {{ user.talantuser.steam_id }}
+                    </span>
+                            </div>
+                            <a class="side__account-exit" href="{% url 'steam_logout' %}">
+                                <svg class="side__account-exit" width="23" height="23" viewBox="0 0 23 23" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M6.2854 5.02808L5.02832 6.28516L10.0566 11.3135L5.02832 16.3418L6.2854 17.5989L11.3137 12.5706L16.342 17.5989L17.5991 16.3418L12.5708 11.3135L17.5991 6.28517L16.342 5.02809L11.3137 10.0564L6.2854 5.02808Z"
+                                          fill="#F36459"/>
+                                </svg>
+                            </a>
+
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="side__accounts side__block">
+                    <div class="side__block-header">
+                        <h4 class="side__block-title">
+                            Поделиться
+                        </h4>
+                    </div>
+                    <div class="side__shares side__block-body">
+                        <a class="side__share-btn" href="">
+                            <svg class="side__share-icon" width="34" height="34" viewBox="0 0 34 34" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28.0594 0H5.94056C2.66019 0 0 2.66019 0 5.94056V28.0594C0 31.3398 2.66019 34 5.94056 34H28.0594C31.3398 34 34 31.3398 34 28.0594V5.94056C34 2.66019 31.3398 0 28.0594 0ZM25.1537 18.8574C25.1537 18.8574 28.0815 21.4704 28.4278 22.5093C28.7741 23.5481 28.2704 23.5796 27.8296 23.7685C27.3889 23.9574 24.0833 23.863 24.0833 23.863C24.0833 23.863 23.1389 23.7685 22.4778 23.0759C21.8167 22.3833 20.463 20.5574 19.8648 20.7148C19.2667 20.8722 19.0463 21.5019 18.9204 22.9815C18.9204 22.9815 19.1093 23.7685 18.0074 23.8C16.9056 23.8315 14.1667 24.1463 11.4593 21.6907C8.75185 19.2352 5.50926 12.6241 5.54074 12.4037C5.57222 12.1833 4.81667 11.2389 6.01296 11.1759C7.20926 11.113 8.78333 11.1759 8.78333 11.1759C8.78333 11.1759 10.0426 10.8611 10.263 11.9C10.263 11.9 11.7111 15.363 13.2537 16.8426C14.7963 18.3222 14.45 13.4741 14.45 13.4741C14.45 13.4741 14.513 11.6167 13.0333 11.5222C13.0333 11.5222 13.0648 10.987 14.1037 10.6722C15.1426 10.3574 17.787 10.5463 18.2593 10.7667C18.7315 10.987 18.9833 10.987 18.9519 12.5926C18.9204 14.1981 18.7944 16.15 19.1093 16.7481C19.4241 17.3463 19.8963 16.9056 19.8963 16.9056C19.8963 16.9056 21.5019 15.5519 23.013 11.8056C23.013 11.8056 23.1704 11.1444 23.8315 11.2074C24.4926 11.2704 27.7981 11.1759 27.7981 11.1759C27.7981 11.1759 28.9315 11.05 28.4907 12.2148C28.05 13.3796 24.9963 17.4407 24.9963 17.4407C24.9963 17.4407 24.4611 18.1333 25.1537 18.8574Z"
+                                      fill="#4CC2F1"/>
+                            </svg>
+                        </a>
+                        <a class="side__share-btn" href="">
+                            <svg class="side__share-icon" width="34" height="34" viewBox="0 0 34 34" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28.0594 0H5.94056C2.66019 0 0 2.66019 0 5.94056V28.0594C0 31.3398 2.66019 34 5.94056 34H17V21.1556L12.8759 21.1241V15.4889H17V13.6C17.2519 6.39074 22.887 6.07593 22.887 6.07593H28.0185L27.9556 11.7111H23.4852C22.4148 11.7741 22.3204 13.0019 22.3204 13.0019V15.4889H22.5093H28.0185V21.1556H22.4022V34H28.0594C31.3398 34 34 31.3398 34 28.0594V5.94056C34 2.66019 31.3398 0 28.0594 0Z"
+                                      fill="#4CC2F1"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+            <div class="content">
+                <div class="content__container container">
+                    <div class="content__general-stats general-stats" data-score="{{ general_score }}">
+                        <div class="general-stats__header">
+                            <div class="general-stats__header-top">
+                                <h4 class="general-stats__title">Общая статистика</h4>
+                                <span class="general-stats__score"></span>
+                            </div>
+                            {% if user.talantuser.dota_result.result or user.talantuser.cs_result.result %}
+                                {% if general_score < 55 %}
+                                    <h3 class="general-stats__text-stat">У вас низкий уровень командности в играх</h3>
+                                {% elif 55 <= general_score and general_score < 72 %}
+                                    <h3 class="general-stats__text-stat">У вас средний уровень командности в играх</h3>
+                                {% elif 72 <= general_score and general_score < 83 %}
+                                    <h3 class="general-stats__text-stat">У вас хороший уровень командности в играх</h3>
+                                {% elif 83 <= general_score %}
+                                    <h3 class="general-stats__text-stat">У вас отличный уровень командности в играх</h3>
+                                {% endif %}
+                            {% else %}
+                            <h3 class="general-stats__text-stat">У вас не проанализировано ни одной игры</h3>
+                            {% endif %}
+                        </div>
+                        <div class="general-stats__marker"></div>
+                        <div class="general-stats__toner toner"></div>
+                    </div>
+                    <div class="game-card game-card_cs">
+                        <div class="game-card__header">
+                            <div class="game-card__icon-wrapper game-card__header-item">
+                                <img class="game-card__icon" src="{% static 'core/img/csgo_icon.svg' %}"
+                                     alt="csgo_icon">
+                            </div>
+                            {% if user.talantuser.cs_result.error %}
+                            <span class="game-card__text-score game-card__header-item">{{ user.talantuser.cs_result.error }}</span>
+                            <button class="game-card__btn game-card__analyse game-card__header-item analyse_csgo">
+                                <span class="game-card__btn-text">
+                                    анализ
+                                </span>
+                                <img class="game-card__btn-icon" src="{% static 'core/img/analyse.svg' %}"
+                                     alt="analyse">
+                            </button>
+                            {% elif user.talantuser.cs_result.result %}
+                            <span class="game-card__text-score game-card__header-item">{{ user.talantuser.cs_result.result_str }}</span>
+                            <span class="game-card__score game-card__header-item"><span
+                                    class="inter">{{ user.talantuser.cs_result.result_num }}</span> очков</span>
+                            <button class="game-card__btn game-card__refresh game-card__header-item analyse_csgo">
+                    <span class="game-card__btn-text">
+                        повторить
+                    </span>
+                                <img class="game-card__btn-icon" src="{% static 'core/img/reload.svg' %}" alt="reload">
+                            </button>
+                            {% else %}
+                            {% if user.talantuser.steam_id %}
+                            <button class="game-card__btn game-card__analyse game-card__header-item analyse_csgo">
+                                <span class="game-card__btn-text">
+                                    анализ
+                                </span>
+                                <img class="game-card__btn-icon" src="{% static 'core/img/analyse.svg' %}"
+                                     alt="analyse">
+                            </button>
+                            {% else %}
+                            <span class="game-card__header-item">Привяжите игровой аккаунт</span>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                        {% if user.talantuser.cs_result.result and not user.talantuser.cs_result.error %}
+                        <div class="game-card__body">
+                            <ul class="game-card__list">
+                                <li class="game-card__stat">
+                                    <span class="game-card__param">KD: </span><span
+                                        class="game-card__value inter">{{ cs_result.kd }}</span>
+                                </li>
+                                <li class="game-card__stat">
+                                    <span class="game-card__param">Среднее количество очков за раунд: </span><span
+                                        class="game-card__value inter">{{ cs_result.avg_cs }}</span>
+                                </li>
+                                <li class="game-card__stat">
+                                    <span class="game-card__param">Частота MVP: </span><span
+                                        class="game-card__value inter">{{ cs_result.avg_mvp }}</span>
+                                </li>
+                                <li class="game-card__stat">
+                                    <span class="game-card__param">Дружелюбность в игре: </span><span
+                                        class="game-card__value inter">{{ cs_result.avg_give_weapon }}</span>
+                                </li>
+                                <li class="game-card__stat">
+                                    <span class="game-card__param">Частота закладки и обезвреживания бомбы: </span><span
+                                        class="game-card__value inter">{{ cs_result.avg_plant_defuse }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                        <div class="toner"></div>
+                    </div>
+                    <div class="game-card game-card_dota">
+                        <div class="game-card__header">
+                            <div class="game-card__icon-wrapper game-card__header-item">
+                                <img class="game-card__icon" src="{% static 'core/img/dotaIcon.svg' %}" alt="csgo_icon">
+                            </div>
+                            {% if user.talantuser.dota_result.error %}
+                            <span class="game-card__text-score game-card__header-item">{{ user.talantuser.dota_result.error }}</span>
+                            <button class="game-card__btn game-card__analyse game-card__header-item analyse_dota">
+                                <span class="game-card__btn-text">
+                                    анализ
+                                </span>
+                                <img class="game-card__btn-icon" src="{% static 'core/img/analyse.svg' %}"
+                                     alt="analyse">
+                            </button>
+                            {% elif user.talantuser.dota_result.result %}
+                            <span class="game-card__text-score game-card__header-item">{{ user.talantuser.dota_result.result_str }}</span>
+                            <span class="game-card__score game-card__header-item"><span
+                                    class="inter">{{ user.talantuser.dota_result.result_num }}</span> очков</span>
+                            <button class="game-card__btn game-card__header-item analyse_dota">
+                    <span class="game-card__btn-text">
+                        повторить
+                    </span>
+                                <img class="game-card__btn-icon" src="{% static 'core/img/reload.svg' %}" alt="reload">
+                            </button>
+                            {% else %}
+                            {% if user.talantuser.steam_id %}
+                            <button class="game-card__btn game-card__analyse game-card__header-item analyse_dota">
+                                <span class="game-card__btn-text">
+                                    анализ
+                                </span>
+                                <img class="game-card__btn-icon" src="{% static 'core/img/analyse.svg' %}"
+                                     alt="analyse">
+                            </button>
+                            {% else %}
+                            <span class="game-card__header-item">Привяжите игровой аккаунт</span>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                        {% if user.talantuser.dota_result.result and not user.talantuser.dota_result.error %}
+                        <div class="game-card__body">
+                            <ul class="game-card__list">
+                                <li class="game-card__stat">
+                                    <span class="game-card__param">Любимая роль: </span><span
+                                        class="game-card__value inter">{{ dota_result.role }}</span>
+                                </li>
+                                <li class="game-card__stat">
+                                    <span class="game-card__param">Старание: </span><span
+                                        class="game-card__value inter">{{ dota_result.benefit }}</span>
+                                </li>
+                                <li class="game-card__stat">
+                                    <span class="game-card__param">Участие в сражениях: </span><span
+                                        class="game-card__value inter">{{ dota_result.frequency_fight }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        <div class="toner"></div>
+                    </div>
+                    <!--                    <div class="game-card game-card_overwatch">-->
+                    <!--                        <div class="game-card__header">-->
+                    <!--                            <div class="game-card__icon-wrapper game-card__header-item">-->
+                    <!--                                <img class="game-card__icon" src="{% static 'core/img/overwatchIcon.svg' %}"-->
+                    <!--                                     alt="csgo_icon">-->
+                    <!--                            </div>-->
+                    <!--                            <button class="game-card__btn game-card__analyse game-card__header-item">-->
+                    <!--                    <span class="game-card__btn-text">-->
+                    <!--                        анализ-->
+                    <!--                    </span>-->
+                    <!--                                <img class="game-card__btn-icon" src="{% static 'core/img/analyse.svg' %}"-->
+                    <!--                                     alt="analyse">-->
+                    <!--                            </button>-->
+                    <!--                            <div class="dark"></div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+
+        </div>
+    </main>
+    {% include 'core/footer.html' %}
+    <div class="layout">
+
+    </div>
+    <div class="modal">
+        <div class="modal__wrapper">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h4 class="modal__title">Привязка игровых аккаунтов</h4>
+                    <button class="modal__close-btn">
+                        <svg class="modal__close-icon" width="26" height="27" viewBox="0 0 26 27" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M20.1761 7.39245L18.735 5.95129L12.9707 11.7156L7.20642 5.95129L5.76526 7.39245L11.5295 13.1567L5.76454 18.9217L7.2057 20.3629L12.9707 14.5979L18.7357 20.3629L20.1769 18.9217L14.4119 13.1567L20.1761 7.39245Z"
+                                  fill="#F36459"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal__body">
+                    <ul class="modal__accounts">
+                        {% if not user.talantuser.steam_id %}
+                        <li class="modal__account">
+                            <div class="modal__account-left">
+                                <div class="modal__account-icon-wrapper">
+                                    <img class="modal__account-icon" src="{% static 'core/img/steam-icon.svg' %}"
+                                         alt="steam icon">
+                                </div>
+                                <span class="modal__account-name">Steam</span>
+                            </div>
+                            <a class="modal__account-link" href="{% url 'steam_login' %}">
+                                привязать
+                            </a>
+                        </li>
+                        {% endif %}
+                        <!--                        {% if not user.talantuser.blizzard_id %}-->
+                        <!--                            <li class="modal__account">-->
+                        <!--                            <div class="modal__account-left">-->
+                        <!--                                <div class="modal__account-icon-wrapper">-->
+                        <!--                                    <img class="modal__account-icon" src="{% static 'core/img/blizzard-icon.svg' %}"-->
+                        <!--                                         alt="blizzard icon">-->
+                        <!--                                </div>-->
+                        <!--                                <span class="modal__account-name">Blizzard</span>-->
+                        <!--                            </div>-->
+                        <!--                            <a class="modal__account-link">-->
+                        <!--                                привязать-->
+                        <!--                            </a>-->
+                        <!--                        </li>-->
+                        <!--                        {% endif %}-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
