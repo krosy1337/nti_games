@@ -66,7 +66,7 @@ function checkRes(task_id, block) {
 }
 
 function logoutClickHandler(event) {
-        const el = event.target.closest('a.side__account-exit')
+        const el = event.target.closest('a')
         event.preventDefault()
         if (temp_task_dota_id || temp_task_cs_id) {
             exitModal.classList.add('active')
