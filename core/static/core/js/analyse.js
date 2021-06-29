@@ -1,5 +1,8 @@
 const csAnalyseBtn = document.querySelector('.analyse_csgo')
 const dotaAnalyseBtn = document.querySelector('.analyse_dota')
+const logoutButtons = document.querySelectorAll('a.side__account-exit')
+const exitModal = document.querySelector('.exit-warning')
+const talentLogout = document.querySelector('.user__logout')
 
 function check() {
     if (temp_task_dota_id) {
@@ -40,6 +43,12 @@ function checkRes(task_id, block) {
     const btn = btnsContainer.querySelector('.game-card__btn')
     btn.style.display = 'none'
     btnsContainer.insertAdjacentHTML('beforeend', '<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>')
+    if (block === 'dota') {
+        temp_task_dota_id = task_id
+    }
+    if (block === 'cs') {
+        temp_task_cs_id = task_id
+    }
     let timerId = setInterval(function () {
         fetch(`/api/analyse/status/?task=${task_id}`)
             .then(response => response.json())
@@ -49,12 +58,28 @@ function checkRes(task_id, block) {
                         .then(response => {
                             clearInterval(timerId);
                             location.reload()
-                    })
+                        })
                 }
             })
 
     }, 1000)
 }
+
+function logoutClickHandler(event) {
+        const el = event.target.closest('a.side__account-exit')
+        event.preventDefault()
+        if (temp_task_dota_id || temp_task_cs_id) {
+            exitModal.classList.add('active')
+
+            setTimeout(() => {
+                exitModal.classList.remove('active')
+            }, 2000)
+
+            return
+        }
+        el.removeEventListener('click', logoutClickHandler)
+        el.click()
+    }
 
 if (csAnalyseBtn) {
     csAnalyseBtn.addEventListener('click', () => {
@@ -91,4 +116,14 @@ if (csAnalyseBtn) {
             })
             .then(response => startCheckingResultDota(response))
     })
+}
+
+if (logoutButtons) {
+    logoutButtons.forEach(el => {
+        el.addEventListener('click', logoutClickHandler)
+    })
+}
+
+if (talentLogout) {
+    talentLogout.addEventListener('click', logoutClickHandler)
 }

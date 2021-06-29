@@ -59,8 +59,18 @@ class LogoutSteam(APIView):
         request.user.talantuser.steam_openid = ''
         request.user.talantuser.steam_id = None
         request.user.talantuser.cs_result.result = False
-        request.user.talantuser.cs_result.result = False
+        request.user.talantuser.cs_result.result_num = None
+        request.user.talantuser.cs_result.result_str = None
+        request.user.talantuser.cs_result.result_big_str = None
+        request.user.talantuser.cs_result.result_json = None
+        request.user.talantuser.cs_result.error = None
+
         request.user.talantuser.dota_result.result = False
+        request.user.talantuser.dota_result.result_num = None
+        request.user.talantuser.dota_result.result_str = None
+        request.user.talantuser.dota_result.result_big_str = None
+        request.user.talantuser.dota_result.result_json = None
+        request.user.talantuser.dota_result.error = None
         request.user.talantuser.cs_result.save()
         request.user.talantuser.dota_result.save()
         request.user.talantuser.save()

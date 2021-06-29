@@ -1,4 +1,5 @@
 from celery import shared_task
+from celery.contrib.abortable import AbortableTask
 from django.contrib.auth.models import User
 from django.conf import settings
 

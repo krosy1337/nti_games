@@ -663,6 +663,7 @@ button:active {
     background-color: transparent;
     padding: 0;
     cursor: pointer;
+    margin-left: auto;
 }
 
 .general-stats {
@@ -961,21 +962,50 @@ button:active {
 }
 
 .tooltip__row {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 27px;
 }
 
 .tooltip__text {
     color: var(--color-44);
     font-family: Inter, sans-serif;
-    font-size: 16px;
+
+    width: 100%;
+    background: linear-gradient(90deg, #10F935 0%, #95EC26 20.83%, #B5EF6B 39.06%, #E9ED30 55.21%, #D0DB4E 77.6%, #C88605 100%);
+
+    border-radius: 4px;
+
+    height: 18px;
+
+    position: relative;
+}
+
+.tooltip__num {
+    position: absolute;
+
+    top: -20px;
+}
+
+.tooltip__num_100 {
+    left: 0;
+}
+
+.tooltip__num_83 {
+    right: 83%;
+}
+
+.tooltip__num_72 {
+    right: 72%;
+}
+
+.tooltip__num_52 {
+    right: 52%;
+}
+
+.tooltip__num_0 {
+    right: 0;
 }
 
 body {
@@ -1105,7 +1135,7 @@ body.lock {
     border-radius: 0 15px 0 0;
     font-family: "Play", sans-serif;
     max-width: 380px;
-    overflow: auto;
+    overflow-y: auto;
     z-index: 1;
     -webkit-transition: .3s;
     -o-transition: .3s;
@@ -1195,6 +1225,45 @@ body.lock {
     padding: 13px 0;
     padding-left: 10px;
     padding-right: 20px;
+    position: relative;
+}
+
+.exit-warning {
+    position: absolute;
+    left: 50%;
+    top: -100%;
+
+    transform: translate(-50%, -50%);
+
+    font-family: Play, sans-serif;
+
+    padding: 35px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #fff;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+
+    border-radius: 25px;
+
+    z-index: 2000;
+
+    transition: top .3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.exit-warning.active {
+    top: 15%;
+}
+
+.exit-warning__text {
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 18px;
 }
 
 .side__account-img {
@@ -1256,6 +1325,10 @@ body.lock {
 
 .side__share-btn {
     margin: 0 10px;
+
+    background-color: transparent;
+
+    padding: 0;
 }
 
 .content {
@@ -1837,6 +1910,13 @@ body.lock {
 
     .side {
         padding-right: calc(20px + 20 * ((100vw - 320px) / 697));
+    }
+
+    .exit-warning {
+        padding: calc(15px + 20 * ((100vw - 320px) / 697))
+        calc(10px + 10 * ((100vw - 320px) / 697))
+        calc(15px + 20 * ((100vw - 320px) / 697))
+        calc(10px + 10 * ((100vw - 320px) / 697));
     }
 }
 

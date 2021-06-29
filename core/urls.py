@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import api, talent, blizzard, pages, steam, api_docs
+from .views import api, talent, pages, steam, api_docs
 from django.views.generic import TemplateView
 
 
@@ -15,9 +15,6 @@ urlpatterns = [
     path('api/auth/complete/steam/', steam.AuthCompleteSteam.as_view(), name='steam_auth'),
     path('api/logout/steam/', steam.LogoutSteam.as_view(), name='steam_logout'),
 
-    path('api/auth/login/blizzard/', blizzard.AuthLoginBlizzard.as_view(), name='blizzard_login'),
-    path('api/auth/complete/blizzard/', blizzard.AuthCompleteBlizzard.as_view(), name='blizzard_auth'),
-    path('api/logout/blizzard/', blizzard.LogoutBlizzard.as_view(), name='blizzard_logout'),
 
     path('api/analyse/dota/start/', api.DotaAnalyseStart.as_view(), name='analyse-dota'),
     path('api/analyse/cs/start/', api.CsAnalyseStart.as_view(), name='analyse-cs'),
