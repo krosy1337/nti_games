@@ -938,6 +938,11 @@ button:active {
 
 .tooltip__image {
     width: 45px;
+    height: 45px;
+}
+
+.tooltip__image_big {
+    transform: scale(1.3);
 }
 
 
@@ -981,6 +986,40 @@ button:active {
     height: 18px;
 
     position: relative;
+}
+
+.tooltip__progress {
+    width: 100%;
+    background-color: var(--color-f5);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+
+    height: 18px;
+
+    position: relative;
+}
+
+.tooltip__progress-block {
+    height: 100%;
+    width: 0;
+
+    background-color: #bdbdbd;
+
+    border-radius: 8px 0 0 8px;
+}
+
+.tooltip__progress-marker {
+    position: absolute;
+    height: 20px;
+    width: 2px;
+
+    background-color: #828282;
+
+    border-radius: 1px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
 }
 
 .tooltip_card {
@@ -1148,6 +1187,7 @@ body.lock {
     -ms-flex-negative: 0;
     flex-shrink: 0;
     cursor: pointer;
+    padding: 10px 0;
 }
 
 .main {
@@ -1755,124 +1795,175 @@ body.lock {
 }
 
 /* MOY */
+
 .content-about {
-    box-sizing: border-box;
-    background-color: var(--color-ff);
-    box-shadow: 1px 1px 6px var(--color-lite);
-    border-radius: 16px;
-    min-height: 500px;
-    max-width: 1030px;
-    margin: 0 0 40px 0;
-    padding: 15px 25px;
-    display: flex;
-    flex-direction: column;
+	position: relative;
+	box-sizing: border-box;
+	background-color: var(--color-ff);
+	box-shadow: 1px 1px 6px var(--color-lite);
+	border-radius: 0 16px 16px 16px;
+	min-height: 500px;
+	max-width: 1030px;
+	margin: 0 0 40px 0;
+	padding: 15px 25px;
+	display: flex;
+	flex-direction: column;
 }
 
+.about-element__stikcer {
+	position: relative;
+	top: 4px;
+}
 .content.error {
-    position: relative;
-    height: 100%;
-    width: 100%;
+	position: relative;
+	height: 100%;
+	width: 100%;
 }
-
 .content-error {
-    box-sizing: border-box;
-    background-color: var(--color-ff);
-    box-shadow: 1px 1px 6px var(--color-lite);
-    border-radius: 16px;
-    min-height: 500px;
-    max-width: 1030px;
-    margin: 0 0 40px 0;
-    padding: 15px 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
+	box-sizing: border-box;
+	background-color: var(--color-ff);
+	box-shadow: 1px 1px 6px var(--color-lite);
+	border-radius: 16px;
+	min-height: 500px;
+	max-width: 1030px;
+	margin: 0 0 40px 0;
+	padding: 15px 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
 }
-
 .content-about:last-child {
-    margin-bottom: 60px;
+	margin-bottom: 60px;
 }
-
 .content__contanier.contanier {
-    max-width: 1030px;
-    padding: 0 15px;
-    margin: auto;
+	max-width: 1030px;
+	padding: 0 15px;
+	margin: auto;
 }
-
 .content-error__title {
-    font-size: 72px;
-    font-family: 'Play', sans-serif;
-    color: #4CC2F1;
-    margin-top: 0;
+	font-size: 72px;
+	font-family: 'Play', sans-serif;
+	color: #4CC2F1;
+	margin-top: 0;
 }
-
 .error-contanier {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
-
 .content-error__span {
-    font-size: 72px;
-    font-family: 'Play', sans-serif;
-    color: var(--color-44);
-    text-align: center;
+	font-size: 72px;
+	font-family: 'Play', sans-serif;
+	color: var(--color-44);
+	text-align: center;
 
 }
-
 .content-error__description {
-    font-size: 24px;
-    text-align: center;
-    color: var(--color-00);
-    font-family: 'Play', sans-serif;
+	font-size: 24px;
+	text-align: center;
+	color: var(--color-00);
+	font-family:'Play', sans-serif;
 }
-
+.content-element h3 {
+	font-family: 'Inter', sans-serif;
+	padding: 0;
+	font-size: 36px;
+	font-weight: 500;
+	display: inline;
+	margin: 0;
+}
 .content-about__title {
-    font-family: "Play", sans-serif;
-    font-weight: 500;
-    font-size: 30px;
-    text-indent: 18px;
-    color: var(--color-1c);
+	display: inline-block;
+	position: relative;
+	font-family: "Play", sans-serif;
+	font-weight: 500;
+	padding: 10px 0;
+	text-indent: 18px;
+	color: var(--color-1c);
+	background-color: var(--color-ff);
+	border-radius: 16px 16px 0 0;
+	box-shadow: 1px -3px 6px var(--color-lite);
+	z-index: 5;
 }
-
-.content-about__description {
-    font-family: 'Inter';
-    font-weight: 400;
-    font-size: 18px;
-    text-indent: 10px;
-    line-height: 1.5;
+.content-about__description_instr {
+	flex-wrap: wrap;
     position: relative;
-    color: var(--color-00);
+    right: -20px;
+    flex-direction: column;
 }
-
-.content-about img {
-    margin: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px #222222;
+.content-about__inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 10px;
 }
-
+.content-about__description.one p, .content-about__description.two p {
+	max-width: 700px;
+	position: relative;
+}
+.content-about__description.three p, .content-about__description.four p {
+	max-width: 650px;
+	position: relative;
+}
+.content-about__description img {
+	margin: 0 20px;
+}
+.img-for-about {
+	border-radius: 10px;
+	box-shadow: 1px 1px 4px #242424c2;
+}
+.content-about__description {
+	text-align: center;
+	font-family: 'Inter';
+	font-weight: 400;
+	font-size: 24px;
+	text-indent: 10px;
+	line-height: 1.5;
+	position: relative;
+	color: var(--color-00);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap-reverse;
+	margin-bottom: 40px;
+}
+.content-about__description.two {
+	flex-wrap: wrap;
+}
+.content-about__description.four {
+	flex-wrap: wrap;
+}
 .abzac {
-    margin-bottom: 40px;
+	margin-bottom: 40px;
 }
-
 .content-about__elem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
+.instructions-about-img {
+	width: 100%;
+	padding: 0 10px;
+}
+.img-for-insrtuction {
+	height: 24px;
+}
+.main.error {
+	  margin-top: 80px;
+  }
 
-.on-home-button {
-    padding: 10px 40px;
-    background-color: #4CC2F1;
-    color: inherit;
-    color: #fff;
-    font-family: 'Play', sans-serif;
-    font-size: 24px;
-    border-radius: 36px;
-    letter-spacing: 1px;
-    box-sizing: border-box;
+  .on-home-button {
+	padding: 10px 40px;
+	background-color: #4CC2F1;
+	color: #ffffff;
+	font-family: 'Play', sans-serif;
+	font-size: 24px;
+	border-radius: 36px;
+	letter-spacing: 1px;
+	box-sizing: border-box;
 }
 
 
