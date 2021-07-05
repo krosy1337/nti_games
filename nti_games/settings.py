@@ -58,7 +58,7 @@ REST_FRAMEWORK = {
 ROOT_URLCONF = 'nti_games.urls'
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'core.auth_backend.OAuthBackend']
-LOGIN_URL = '/api/auth/login/talent'
+LOGIN_URL = 'index'
 
 TEMPLATES = [
     {
