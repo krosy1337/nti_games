@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="light-theme" lang="ru">
+
+<head>
+    <title>Кружок ремейк</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script type="module" src="{% static 'core/js/script.js' %}" defer></script>
+</head>
+
+<body>
+<div class="wrapper">
+    <header class="header">
+    <div class="header__inner container">
+        <a class="header__logo logo" href="{% url 'index' %}">
+            <img class="logo__image" src="{% static 'core/img/talent_logo.svg' %}" alt="talent logo">
+            <span class="logo__text">Game stats</span>
+        </a>
+    </div>
+</header>
+    <main class="main">
+        <div class="main__inner">
+            <div class="container">
+                <img class="main__bg-figure main__bg-figure_1" src="{% static 'core/img/1.svg' %}" alt="figure">
+                <img class="main__bg-figure main__bg-figure_2" src="{% static 'core/img/2.svg' %}" alt="figure">
+                <img class="main__bg-figure main__bg-figure_3" src="{% static 'core/img/3.svg' %}" alt="figure">
+            </div>
+            <div class="content">
+                <div class="content__contanier contanier">
+                    <div class="content-element">
+                        <div class="content-about__title">
+                            <div class="content-about__inner">
+                                <img class="about-element__stikcer" src="{% static 'core/img/clipboard 1.svg' %}" alt="sticker" width="50px"
+                                     height="50px">
+                                <h3>О чём проект?</h3>
+                            </div>
+                        </div>
+                        <div class="content-about">
+
+                            <div class="content-about__description">
+                                <p>Этот сервис сделан для анализа игровой статистики пользователя и расчета его уровня
+                                    командности. Командой разработчиков были созданы формулы, на основе которых можно
+                                    довольно точно судить, насколько хорошо пользователь взаимодействует с командой и
+                                    компьютерных играх. Сейчас в списке игр, которые мы анализируем 2 популярных игры:
+                                    Dota 2 и CsGO. Этот список со временем будет расширяться.</p>
+                            </div>
+                            <div class="content-about__description three">
+                                <img class="img-for-about" src="{% static 'core/img/cs.jpg' %}" alt="image" width="200px">
+                                <p>Counter Strike - этот шутер популярен во все времена. Сейчас это считается
+                                    киберспортивной дисциплиной и не удивительно что мы берем эту игру для оценки
+                                    командности пользователя. Здесь игрок может раскрывать свои навыки стрельбы,
+                                    тактики, а также навыки командного игрока.</p>
+                            </div>
+                            <div class="content-about__description four">
+                                <p>Dota 2. Вы где-нибудь видели игру в жанре MOBA, где можно выиграть одному. Чтобы
+                                    одержать победу команда должна распределиться по ролям и играть сообща. Именно
+                                    поэтому уровень взаимодействия с командой здесь является приоритетным.</p>
+                                <img class="img-for-about" src="{% static 'core/img/dota.jpg' %}" alt="image" width="200px">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-element">
+                        <div class="content-about__title">
+                            <div class="content-about__inner">
+                                <img class="about-element__stikcer" src="{% static 'core/img/instructions 1.svg' %}" alt="sticker"
+                                     width="50px" height="50px">
+                                <h3>Инструкция</h3>
+                            </div>
+                        </div>
+                        <div class="content-about">
+
+                            <div class="content-about__description content-about__description_instr">
+                                <p>При первом посещении сайта на экране будет страница приветствия, чтобы начать
+                                    пользоваться сервисом, нужно нажать кнопку <img class="img-for-insrtuction"
+                                                                                    src="{% static 'core/img/instr21.svg' %}">, как показано
+                                    на картинке</p>
+                                <p>После чего Необходимо будет пройти аутентификацию через платформу “Талант”, если есть
+                                    аккаунт на Таланте, то просто жмите <img class="img-for-insrtuction"
+                                                                             src="{% static 'core/img/instr22.png' %}">, или
+                                    зарегистрируйтесь (для этого необходимо нажать <img class="img-for-insrtuction"
+                                                                                        src="{% static 'core/img/instr23.png' %}"> и
+                                    зарегистрироваться непосредственно на сайте Таланта)</p>
+                                <p>После успешной авторизации Вы окажетесь на странице пользователя, и чтобы открыть
+                                    боковое меню, нужно просто нажать <img class="img-for-insrtuction"
+                                                                           src="{% static 'core/img/instr24.svg' %}">. В боковом меню можно
+                                    привязать игровые аккаунты к сервису, для этого нажмите на + и выберете возможные
+                                    аккаунты для привязки</p>
+                                <p>После привязки аккаунтов появится возможность проанализировать уровень командности в
+                                    играх, для этого нажмите на появившийся значок <img class="img-for-insrtuction"
+                                                                                        src="{% static 'core/img/instr25.jpg' %}"></p>
+                                <p>У Вас появится общий score в верхнем блоке основного блока страницы, а также на
+                                    иконке пользователя вы можете наблюдать появившуюся медаль. Чтобы узнать подробнее
+                                    про медальки, нужно просто навестись на них и Вы увидите, сколько очков необходимо
+                                    для получения той или иной награды</p>
+                                <p>Вернемся к функционалу бокового меню. Здесь можно отвязать аккаунт от платформы,
+                                    нажав <img class="img-for-insrtuction" src="{% static 'core/img/instr26.svg' %}">. Также можно
+                                    поделиться своими результатами в соцсетях, для этого нужно кликнуть по
+                                    соответствующей иконке <img class="img-for-insrtuction" src="{% static 'core/img/instr27.svg' %}">. Выше
+                                    есть дополнительная информация об аккаунте Талант и об игровых аккаунтах</p>
+                                <p>Чтобы выйти из сервиса, необходимо кликнуть по значку <img
+                                        class="img-for-insrtuction" src="{% static 'core/img/instr28.svg' %}"> в боковом меню. Но при этом
+                                    после выхода Вы можете снова зайти на сервис, при этом данные сохранятся</p>
+                                <img class="instructions-about-img" src="{% static 'core/img/instr5.jpg' %}" alt="footer">
+                                <p>Внизу странички есть “подвал”, где есть ссылки на платформу Талант, нашу почту,
+                                    гитхаб и YouTube канал. Также там вы сможете найти ссылки для обратной связи или же
+                                    для баг-репорта. Последние две ссылки переадресуют вас на Google-форму, первая - на
+                                    обращения для разработчиков, вторая - на форму для тех кто нашел какой-то баг в
+                                    сервисе.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include 'core/footer.html' %}
+    <div class="layout"></div>
+</div>
+</body>
+
+</html>

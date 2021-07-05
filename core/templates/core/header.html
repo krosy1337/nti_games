@@ -29,23 +29,18 @@
                         <div class="tooltip__content">
                             <div class="tooltip__inner">
                                 <div class="tooltip__row">
-                                    <img class="tooltip__image" src="{% static 'core/img/bronzeMedal.svg' %}"
+                                    <img class="tooltip__image {% if general_score < 55 %} tooltip__image_big {% endif %}" src="{% static 'core/img/bronzeMedal.svg' %}"
                                          alt="user medal">
-                                    <img class="tooltip__image" src="{% static 'core/img/silverMedal.svg' %}"
+                                    <img class="tooltip__image {% if 55 <= general_score and general_score < 72 %} tooltip__image_big {% endif %}" src="{% static 'core/img/silverMedal.svg' %}"
                                          alt="user medal">
-                                    <img class="tooltip__image" src="{% static 'core/img/userMedal.svg' %}"
+                                    <img class="tooltip__image {% if 72 <= general_score and general_score < 83 %} tooltip__image_big {% endif %}" src="{% static 'core/img/userMedal.svg' %}"
                                          alt="user medal">
-                                    <img class="tooltip__image" src="{% static 'core/img/kdMedal.svg' %}"
+                                    <img class="tooltip__image {% if 83 <= general_score %} tooltip__image_big {% endif %}" src="{% static 'core/img/kdMedal.svg' %}"
                                          alt="user medal">
                                 </div>
-                                <div class="tooltip__nums">
-                                    <span class="tooltip__num">0</span>
-                                    <span class="tooltip__num">52</span>
-                                    <span class="tooltip__num">72</span>
-                                    <span class="tooltip__num">83</span>
-                                    <span class="tooltip__num">100</span>
-                                </div>
-                                <div class="tooltip__text">
+                                <div class="tooltip__progress" data-score="{{ general_score }}">
+                                    <div class="tooltip__progress-marker"></div>
+                                    <div class="tooltip__progress-block"></div>
                                 </div>
 <!--                                <div class="inter">Это далеко не конечный вариант.Если у вас есть идеи то пишите их в форму обратной связи</div>-->
 
@@ -61,7 +56,7 @@
                 <path d="M7.82348 7.9963L0.870587 14.9492C0.630219 15.1896 0.630219 15.5793 0.870587 15.8198C1.11103 16.0601 1.50075 16.0601 1.74115 15.8198L9.12932 8.43158C9.36965 8.19118 9.36965 7.80142 9.12932 7.56102L1.74115 0.172851C1.49656 -0.0633678 1.10681 -0.0565853 0.870587 0.188003C0.640176 0.426603 0.640176 0.80485 0.870587 1.04341L7.82348 7.9963Z"/>
             </svg>
         </button>
-        <a class="header__logo logo">
+        <a class="header__logo logo" href="{% url 'index' %}">
             <img class="logo__image" src="{% static 'core/img/talent_logo.svg' %}" alt="talent logo">
             <span class="logo__text">Game stats</span>
         </a>

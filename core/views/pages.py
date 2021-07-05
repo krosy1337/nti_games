@@ -35,5 +35,9 @@ def user_page(request):
     })
 
 
+def about(request):
+    return render(request, 'core/about.html')
+
+
 def page_not_found(request, exception):
     return render(request, 'core/error.html')

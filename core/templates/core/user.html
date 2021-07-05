@@ -9,9 +9,22 @@
     <meta charset="utf-8">
 
     <meta name="description" content="Сервис для анализа игровой статистики в командных онлайн-играх">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Danzo0l/trehochko/main/main/static/main/home/img/meta-image.jpg" />
-	<meta property="og:title" content="Мой уровень командности: {{ general_score }}" />
 	<meta property="og:description" content="Talent | Game stats Узнай свой уровень командности" />
+    {% if user.talantuser.dota_result.result or user.talantuser.cs_result.result %}
+    <meta property="og:title" content="Мой уровень командности: {{ general_score }}" />
+    {% if general_score < 55 %}
+    <meta property="og:image" content="https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/bronze-post.png" />
+    {% elif 55 <= general_score and general_score < 72 %}
+    <meta property="og:image" content="https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/silver-post.png" />
+    {% elif 72 <= general_score and general_score < 83 %}
+    <meta property="og:image" content="https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/gold-post.png" />
+    {% elif 83 <= general_score %}
+    <meta property="og:image" content="https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/green-post.png" />
+    {% endif %}
+    {% else %}
+    <meta property="og:title" content="Game Stats | Анализ игровой статистики" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/no-analyse.png" />
+    {% endif %}
 
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 
@@ -139,8 +152,22 @@
 							document.write(VK.Share.button(
 								{
 								url: 'https://gamestats.kruzhok.org/',
-								title: 'Мой уровень командности {{ general_score }}',
-								image: 'https://raw.githubusercontent.com/Danzo0l/trehochko/main/main/static/main/home/img/meta-image.jpg',
+
+                                {% if user.talantuser.dota_result.result or user.talantuser.cs_result.result %}
+                                title: 'Мой уровень командности {{ general_score }}',
+                                {% if general_score < 55 %}
+                                image: 'https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/bronze-post.png',
+                                {% elif 55 <= general_score and general_score < 72 %}
+                                image: 'https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/silver-post.png',
+                                {% elif 72 <= general_score and general_score < 83 %}
+                                image: 'https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/gold-post.png',
+                                {% elif 83 <= general_score %}
+                                image: 'https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/green-post.png',
+                                {% endif %}
+                                {% else %}
+                                title: 'Game Stats | Анализ игровой статистики',
+                                image: 'https://raw.githubusercontent.com/krosy1337/nti_games/main/core/static/core/img/no-analyse.png',
+                                {% endif %}
 							},
 							{
 								type: 'custom',
@@ -155,8 +182,7 @@
 
 							}));
 						</script>
-
-                        <div class="fb-share-button" data-href="https://gamestats.kruzhok.org/" data-layout="button" data-size="small"><a class="fb-xfbml-parse-ignore side__share-btn" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgamestats.kruzhok.org%2F&amp;src=sdkpreparse">
+                        <div class="fb-share-button" data-href="https://gamestats.kruzhok.org/user/" data-layout="button" data-size="small"><a class="fb-xfbml-parse-ignore side__share-btn" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgamestats.kruzhok.org%2Fuser%2F&amp;src=sdkpreparse">
                             <svg class="side__share-icon" width="34" height="34" viewBox="0 0 34 34" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M28.0594 0H5.94056C2.66019 0 0 2.66019 0 5.94056V28.0594C0 31.3398 2.66019 34 5.94056 34H17V21.1556L12.8759 21.1241V15.4889H17V13.6C17.2519 6.39074 22.887 6.07593 22.887 6.07593H28.0185L27.9556 11.7111H23.4852C22.4148 11.7741 22.3204 13.0019 22.3204 13.0019V15.4889H22.5093H28.0185V21.1556H22.4022V34H28.0594C31.3398 34 34 31.3398 34 28.0594V5.94056C34 2.66019 31.3398 0 28.0594 0Z"
@@ -192,7 +218,7 @@
                         <div class="general-stats__toner toner"></div>
                     </div>
                     <div class="game-card game-card_cs">
-                        <div class="game-card__header">
+                        <div class="game-card__header" {% if not user.talantuser.cs_result.result or user.talantuser.cs_result.error %} style="border-radius: 8px" {% endif %}>
                             <div class="game-card__icon-wrapper game-card__header-item">
                                 <img class="game-card__icon" src="{% static 'core/img/csgo_icon.svg' %}"
                                      alt="csgo_icon">
@@ -236,9 +262,21 @@
                                 <li class="game-card__stat">
                                     <span class="game-card__param">KD: </span><span
                                         class="game-card__value inter">{{ cs_result.kd }}</span>
+<!--                                    <div class="tooltip tooltip_card">-->
+<!--                                        <div class="tooltip__btn tooltip__btn_card">-->
+<!--                                            <img class="game-card__q" src="{% static 'core/img/doubts-button.svg' %}" alt="question">-->
+<!--                                        </div>-->
+<!--                                        <div class="tooltip__content tooltip__content_card">-->
+<!--                                            <div class="tooltip__inner tooltip__inner_card">-->
+<!--                                                <div class="tooltip__text tooltip__text_card">-->
+<!--                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, pariatur?-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </li>
                                 <li class="game-card__stat">
-                                    <span class="game-card__param">Среднее количество очков за раунд: </span><span
+                                    <span class="game-card__param">Среднее количество очков за игру: </span><span
                                         class="game-card__value inter">{{ cs_result.avg_cs }}</span>
                                 </li>
                                 <li class="game-card__stat">
@@ -252,14 +290,15 @@
                                 <li class="game-card__stat">
                                     <span class="game-card__param">Частота закладки и обезвреживания бомбы: </span><span
                                         class="game-card__value inter">{{ cs_result.avg_plant_defuse }}</span>
+
                                 </li>
                             </ul>
                         </div>
                         {% endif %}
-                        <div class="toner"></div>
+                        <div class="toner toner_card"></div>
                     </div>
                     <div class="game-card game-card_dota">
-                        <div class="game-card__header">
+                        <div class="game-card__header" {% if not user.talantuser.dota_result.result or user.talantuser.dota_result.error %} style="border-radius: 8px" {% endif %}>
                             <div class="game-card__icon-wrapper game-card__header-item">
                                 <img class="game-card__icon" src="{% static 'core/img/dotaIcon.svg' %}" alt="csgo_icon">
                             </div>
@@ -315,7 +354,7 @@
                         </div>
                         {% endif %}
 
-                        <div class="toner"></div>
+                        <div class="toner toner_card"></div>
                     </div>
                 </div>
             </div>

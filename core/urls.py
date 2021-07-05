@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('', pages.index_page, name='index'),
     path('user/', pages.user_page, name='user_page'),
+    path('about/', pages.about, name='about'),
 
     path('api/auth/login/talent/', talent.AuthLoginTalent.as_view(), name='api_auth_login_talent'),
     path('api/auth/complete/talent/', talent.AuthCompleteTalent.as_view(), name='api_auth_complete_talent'),
