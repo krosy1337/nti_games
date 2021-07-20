@@ -29,26 +29,26 @@
 Необходимо переименовать файл '.env.example' в '.env' и заполнить данные в этом файле  
 `pip3 install -r nti_games/requirements.txt `  
 `pip3 install virtualenv`  
-`python3 nti_games/manage.py collectstatic`
-`python3 nti_games/manage.py migrate`
+`python3 nti_games/manage.py collectstatic`  
+`python3 nti_games/manage.py migrate`  
 Эту команду следует вводить самой последней (когда все команды в другий терминалах уже введены)  
-`python3 nti_games/manage.py runserver --insecure`  
+`python3 nti_games/manage.py runserver --insecure`   
 
 >##### Код для 2 окна терминала:  
 `sudo apt install redis`   
 `sudo apt install redis-server`  
 `sudo apt install php-redis`  
 `redis-cli`  
-`ping`
+`ping`  
 Если вывелось `PONG` то можно выйти из интерфса Redis
 
 >##### Код для 3 окна терминала:  
 `source venv/bin/activate`   
 `cd nti_games/`  
 `sudo systemctl enable redis-server`  
-`sudo systemctl restart redis-server`
-`celery -A nti_games worker -l info -P threads`
-Если Celery запустился, то можно вернуться к 1 окну терминала
+`sudo systemctl restart redis-server`  
+`celery -A nti_games worker -l info -P threads`  
+Если Celery запустился, то можно вернуться к 1 окну терминала  
 
 ░░░░░░░█▐▓▓░████▄▄▄█▀▄▓▓▓▌█  
 ░░░░░▄█▌▀▄▓▓▄▄▄▄▀▀▀▄▓▓▓▓▓▌█  
